@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>所有病例资料</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet">
+    <style>
+    body{
+        background: #efefef;
+    }
+    .frist_row{
+    margin-bottom:20px;
+    background: #fff; 
+    height: 100px;
+    width: 100%;
+    }
+    .frist_row p{  
+    
+    float: left;
+    }
+    .frist_row .name{  
+    color:orange;
+    }
+    .frist_row div{
+    padding: 10px;  
+    }
+    .weui-uploader__bd{
+        margin: 0;
+    }
+    .fl{
+    float: left;
+    margin-right: 4px;
+    }
+    #navbar{background: #FFF;  }
+    #navbar p{color:#fff;}
+    #navbar a{width: 100%;padding: 5px; }
+    .head_img{
+    -webkit-border-radius: 50em;
+     -moz-border-radius: 50em;
+     border-radius: 50em;
+    }
+    .grey{
+      color:#666;
+    }
+    .block{
+      display: inline-block;
+      width: 70%;
+
+    }
+    .weui-cells {
+    margin-top: 0em;
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: relative;
+    }
+    .weui-cells a{
+       margin-top: 1em; 
+    }
+    #yes {
+    background: #f4a400;
+    border-radius: 50px;
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+    </style>
+</head>
+<body ontouchstart>
+    <div class="weui-cells"> 
+        <a class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
+          <div class="weui-media-box__hd">
+           <img class="weui-media-box__thumb head_img" src="images/head.png">
+        </div>
+        <div class="weui-media-box__bd">
+            <span class="ys fl">周杰伦</span><span class="we_desc">(默认)</span>
+            <span class="we_desc grey block">用户ID:<span>23333</span></span>
+            <span class="yes_re"></span>
+        </div>
+          <div class="weui-cell__ft"><img src="images/barcode-2d.png" alt="">
+          </div>
+        </a>  
+        <a class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
+          <div class="weui-media-box__hd">
+           <img class="weui-media-box__thumb head_img" src="images/head.png">
+        </div>
+        <div class="weui-media-box__bd">
+            <span class="ys fl">周杰伦</span><span class="we_desc">(默认)</span>
+            <span class="we_desc grey block">用户ID:<span>23333</span></span>
+            <span class="yes_re"></span>
+        </div>
+          <div class="weui-cell__ft"><img src="images/barcode-2d.png" alt="">
+          </div>
+        </a>  
+    </div>
+    <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">+  添加身份证号</a>
+    <div class="weui-footer weui-footer_fixed-bottom footer">
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+        $(function(){
+        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            $uploaderInput = $("#uploaderInput"),
+            $uploaderFiles = $("#uploaderFiles")
+            ;
+
+        $uploaderInput.on("change", function(e){
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+        });
+        $uploaderFiles.on("click", "li", function(){
+            $galleryImg.attr("style", this.getAttribute("style"));
+            $gallery.fadeIn(100);
+        });
+        $gallery.on("click", function(){
+            $gallery.fadeOut(100);
+        });
+
+    });
+    </script>
+</body>
+</html>

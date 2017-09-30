@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>我的预约</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <style>
+    body{
+      background:#E5E5E5;
+    }
+    .ys{margin-right:6px; }
+    .we_desc{
+      font-size: 13px;
+    }
+    .grey{
+      color:#666;
+    }
+    .block{
+      display: inline-block;
+      width: 70%;
+
+    }
+    .head_img{
+    -webkit-border-radius: 50em;
+     -moz-border-radius: 50em;
+     border-radius: 50em;
+    }
+    .close_re{
+      color:red;
+      font-size: 16px;
+    }
+    .yes_re{
+      color:green;
+      font-size: 16px;
+    }
+    #target p{
+      color:#666;
+      line-height: 30px;
+    }
+    .weui-cells {
+    margin-top: 0em;
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: relative;
+  }
+  .qxyy{
+    height: 29px;
+    width: 103px;
+    line-height: 26px;
+    float: right;
+    font-size: 13px;
+    margin: 0 6px 9px 0;
+  }
+    </style>
+</head>
+<body ontouchstart>
+    <div id="target" >
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
+              </div>
+              <div class="weui-media-box__bd">
+                <span class="ys fl">周杰伦</span><span class="we_desc">主任医师</span>
+                <span class="we_desc grey block">南方医院</span>
+                <span class="yes_re">待医生确认</span>
+              </div>
+            </a>
+          </div>
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                  <div class="weui-cell__bd">
+                    <p>来自：<span>微信</span></p>
+                    <p>订单号：<span>w00309201792800005</span></p>
+                    <p>费用：<span>2000.00</span>元</p>
+                    <p>就诊人：<span>周杰伦</span></p>
+                    <p>就诊时间：<span>2017-9-29晚上班</span></p>
+                    <p>就诊地点：<span>北京市朝阳区和普诊所</span></p>
+                  </div>
+                  <div class="weui-cell__ft">
+                  </div>
+                  <a href="javascript:;" class="weui-btn weui-btn_plain-default qxyy">取消预约</a>
+                </a>
+            </div>
+        </div>
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
+              </div>
+              <div class="weui-media-box__bd">
+                <span class="ys fl">周杰伦</span><span class="we_desc">主任医师</span>
+                <span class="we_desc grey block">南方医院</span>
+                <span class="close_re">已取消</span>
+              </div>
+            </a>
+          </div>
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                  <div class="weui-cell__bd">
+                    <p>来自：<span>微信</span></p>
+                    <p>订单号：<span>w00309201792800005</span></p>
+                    <p>费用：<span>2000.00</span>元</p>
+                    <p>就诊人：<span>周杰伦</span></p>
+                    <p>就诊时间：<span>2017-9-29晚上班</span></p>
+                    <p>就诊地点：<span>北京市朝阳区和普诊所</span></p>
+                  </div>
+                  <div class="weui-cell__ft">
+                  </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+   
+    <div class="weui-footer weui-footer_fixed-bottom">
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+        $(function(){
+            $("#target").on("click",".adept",function(){
+                if($(this).css("height") == "30px"){
+                    $(this).css("height","auto");
+                }else {
+                    $(this).css("height","30px");
+                }
+            });
+            $("#target").on("click",".conf",function(){
+                //如果参数过多，建议通过 object 方式传入
+                $.confirm({
+                  title: '挂号须知',
+                  text: '1.本次所付费用为专家诊疗费，不包含药物、检查、手术等其它费用<br/>2.优先安排预约时间，实际就诊时间与地点以双方沟通的最终订单为准',
+                  onOK: function () {
+                    //点击确认
+                  },
+                  onCancel: function () {
+                    $(".weui-mask").remove();
+                    $(".weui-dialog").remove();
+                  }
+                });
+            });
+            $("#btm_slide").on("click",".conf",function(){
+              $("#one_list").animate({top:'100%'});
+                //如果参数过多，建议通过 object 方式传入
+                $.confirm({
+                  title: '挂号须知',
+                  text: '1.本次所付费用为专家诊疗费，不包含药物、检查、手术等其它费用<br/>2.优先安排预约时间，实际就诊时间与地点以双方沟通的最终订单为准',
+                  onOK: function () {
+                    //点击确认
+                  },
+                  onCancel: function () {
+                    $(".weui-mask").remove();
+                    $(".weui-dialog").remove();
+                  }
+                });
+            });
+            
+            //下边栏
+            // $("#one_list").animate({top:'100%'});
+            $("#target").on("click",".weui-cell_link",function(){
+                $("#one_list").animate({top:'-4%'});
+            });                
+            $("#one_list_left").on("click",function(){
+                $("#one_list").animate({top:'100%'});
+            });
+            $(".bottom_footer").on("click",function(){
+                $("#one_list").animate({top:'100%'});
+            });
+
+        });
+    </script>
+</body>
+</html>

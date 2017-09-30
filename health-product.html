@@ -1,0 +1,640 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="format-detection" content="telephone=no" />
+<meta name="MobileOptimized" content="240">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>健康产品介绍</title>
+<!-- 上线时用 -->
+
+<link rel="stylesheet" href="css/common.min.css" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/polyfill.min.js" ></script>
+<script src="js/fastclick.min.js" ></script>
+<script src="js/iscroll.min.js" ></script>
+<script src="js/common.min.js" ></script>
+<!-- <script src="js/baiduStatistics.min.js" ></script> -->
+<!-- <script src="js/hm.js" ></script> -->
+<!-- 引入加载中 -->
+ 
+<!-- 加载中样式 -->
+<style type="text/css">
+.m18{margin: 18px 0 8px;}
+.m35{margin: 35px 0 8px !important;}
+</style>
+
+<!-- 加载中html -->
+<div class="kd-loading-block"  id="kd-loading-block">
+    <div class="kd-loading-cnt">
+        <i class="kd-loading-bright"></i>
+        <p class="kd-loading-text"></p>
+    </div>
+</div>
+
+<!-- 加载中的js -->
+<script type="text/javascript">
+function showLoading(tip){
+    if(Util.checkNull(tip)){
+        $(".kd-loading-bright").addClass("m35");
+        $(".kd-loading-text").text("");
+    } else {
+        $(".kd-loading-bright").addClass("m18");
+        $(".kd-loading-text").text(tip);
+    }
+    document.getElementById("kd-loading-block").style.display = "-webkit-box";
+}
+function hideLoading(){
+    document.getElementById("kd-loading-block").style.display = "none";
+}
+</script>
+<script type="text/javascript">
+    showLoading('正在加载...');
+    document.onreadystatechange = domStateChange;
+    function domStateChange(){
+        if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入 
+             hideLoading();
+        }
+    }
+</script>
+</head>
+<body onload="load()">
+<link rel="stylesheet" href="css/health_housekeeper.min.css">
+<style>
+.longbox{
+  max-width:none!important;
+  text-align:left!important
+}
+</style>
+<div class="hhk_intro">
+
+<div class="com_wrapper" id="wrapper">
+<div class="com_scroller" id="scroller">
+  <img class="img-responsive" width="100%" src="images/jkcp.jpg"/>
+    <div class="pt15 pb15 pl15 pr15 bcfff z10 kd-border-b">
+      收费标准
+      <div class="flex-c pt5">
+        <div class="bc-green introbox ta_c" style="width:110px">基础版<br/>200元/人/年</div>
+        <div class="border-dot introbox f12 flex1 jc-s" >健康档案基础服务</div>
+      </div>
+      <div class="flex-c pt5">
+        <div class="bc-green introbox ta_c" style="width:110px">大众版<br/>1999元/人/年</div>
+        <div class="border-dot introbox f12 flex1" style="text-align:left">健康管家</div>
+      </div>
+      <div class="flex-c pt5">
+        <div class="bc-green introbox ta_c" style="width:110px">精英版<br/>29000元/人/年</div>
+        <div class="border-dot introbox f12 flex1" style="text-align:left">家庭医生</div>
+      </div>
+    </div>
+    <ul class="kd-list pb15">
+        <li class=" flex-c col">
+          <div class="label bcfff h25 intro kd-border-b flex-c jc-b f14"  onclick="Anima('1')">
+              恶性肿瘤快速就医通道
+              <i id="arrow1" class="icon-main_left c999"><img src="images/ico.png"></i>
+          </div>
+          <div id="intro1" class=" bceef1f3 kd-border-b anime-downwards">
+            <div>
+              <div class="bc-green ta_c h45 f14">服务内容</div>
+              <div class="border-dot intro border-top0 bcfff">
+                <p class="cgreen">集团肿瘤专家库专家面诊1次</p>
+                <p class="greendot">根据医疗专家的时间和方便就诊地点，安排医疗专家与患者进行面对面的充分交流，建立与患者的相互信任，了解患者病史、家族史等情况，解答患者疑虑，为患者建立治疗信心</p>
+                <p class="greendot">面诊过程保证有20-30分钟</p>  
+                <p class="greendot">由医疗专家为患者诊断疾病，制定个性化治疗方案，指导患者治疗</p>
+                <br/>
+                <p class="cgreen">安排入住专家所在的医院进行手术/治疗</p>
+                <p class="greendot">由医疗专家制定个性化手术方案，并亲自主刀对患者进行手术</p>
+                <p class="greendot">由医疗专家为患者安排入院治疗，建立与患者的相互信任，并安排治疗团队为患者提供住院关怀，每天至少与患者交流一次，解答患者疑虑，帮助患者了解病情并建立治疗信心</p>
+                <p class="greendot">手术前，请安排治疗团队与患者和家属交代手术的必要性、采用的术式、手术中可能使用的附加贵重耗材、可能产生的并发症、合并症和意外情况等，征得患者或家属同意并签字</p>
+                <p class="greendot">手术后，请安排治疗团队按照围手术期康复的临床规范指导患者和家属进行治疗，并交代术后需要注意的问题和预后的情况</p>
+                <br/>
+                <p class="cgreen">肿瘤专家手术/治疗后康复管理2个月</p>
+                <p class="greendot">由医疗专家为患者制定个性化康复方案，为患者在住所就近安排医生，指导当地医生按照医疗专家的方案为患者提供康复治疗</p> 
+              </div>
+            </div>
+
+            <div>
+              <div class="bc-green ta_c h45 f14">享受条件</div>
+              <div class="border-dot intro border-top0 bcfff">
+                <p class="greendot">仅限企业购买客户或者团体客户</p>
+                <p class="greendot">享受者需参加深圳社保</p>  
+                <p class="greendot">享受者年龄在18-50岁</p>
+                <p class="greendot">享受人因先天性疾病、先天性畸形、遗传性疾病、既往症及其并发症导致的恶性肿瘤为除外责任<br/>既往症是指在该服务生效日之前已患的疾病或者已有的症状；购买前患有恶性肿瘤、心脏病（心功能不全Ⅱ级以上）、心肌梗塞、高血压病（Ⅱ期以上）、肝硬化、慢性阻塞性支气管疾病、支气管哮喘、肺心病、脑血管疾病、慢性肝炎、糖尿病、类风湿疾病、白血病、再生障碍性贫血、系统性红斑狼疮、帕金森氏病、慢性肾脏疾病、先天性疾病、精神病、癫痫、法定传染病、艾滋病、性病或已被诊断出患有重大疾病，或者正因任何原因住院及全休、半休者不能享受此服务</p>
+                <p class="greendot">为防止带病申请，该服务至生效起有等待期30天</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="bc-green ta_c h45 f14">享受流程</div>
+              <div class="border-dot intro border-top0 bcfff">
+                <p class="greendot">疾病确诊—提交申请—资格审查—享受服务</p>
+              </div>
+            </div>
+
+            <div>
+              <p class="greendot">备注：如一年内各项服务超过套餐次数，则按该项服务正常收费的8.5折优惠收取。</p>
+            </div>
+
+          </div>
+        </li>
+
+        <li class=" flex-c col">
+          <div class="label bcfff h25 intro kd-border-b flex-c jc-b f14" onclick="Anima('2')">
+              健康档案基础服务
+              <i id="arrow2" class="icon-main_left c999"><img src="images/ico.png"></i>
+          </div>
+          <div id="intro2" class=" bceef1f3 kd-border-b anime-downwards">
+            <div>
+              <div class="border-dot intro bcfff">
+                <p class="greendot">客户通过集团健康管理云平台注册个人账户，填写身体状况、生活习惯、家族病史、既往病史等个人基本信息</p>
+                <p class="greendot">客户通过拍照或扫描的方式，上传既往病历资料、检查报告、诊断结果等临床资料，服务期内可随时更新</p>  
+                <p class="greendot">全科医生将客户上传资料进行归类整理，形成电子化、结构化的个人健康档案</p>
+                <p class="greendot">客户健康档案可终身免费储存服务，支持随时调阅使用</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li class=" flex-c col">
+          <div class="h25 label bcfff intro kd-border-b flex-c jc-b f14" onclick="Anima('3')">
+              健康管家
+              <i id="arrow3" class="icon-main_left c999"><img src="images/ico.png"></i>
+          </div>
+          <div id="intro3" class=" bceef1f3 kd-border-b anime-downwards">
+            <div>
+              <p style="padding-top:0">都市生活的快节奏和沉重的工作压力， 改变了人们的生活方式。越来越多的人整日忙碌奔波，却恰恰忽略了最重要的事情—自己和家人的身体健康。很多人遭受亚健康和慢性病的侵袭却无暇应对，最终酿成大病而追悔莫及。博德嘉联医生集团针对客户对健康管理的需求，推出“健康管家”服务，为个人、家庭和企业量身打造一站式健康管理服务。“健康管家”将客户平时零碎的体检和病历资料整理成系统化结构化的终身电子健康档案，提供健康档案管理、个性化体检方案制定、全面健康行为指导、口腔保健、名医看诊等健康保健和医疗服务，让客户不再为全家人的健康问题担忧，为客户节省宝贵的时间和精力。</p>
+              
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p style=>健康建档</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0">
+                      通过远程问诊的方式，了解并详细记录客户的身体基本状况、生活习惯、家族病史、体检信息、诊断结果、指导方案等资料
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                      根据客户提供的既往健康档案，分析评估客户目前的健康状况、预测未来患相关疾病的危险程度、疾病发展趋势及与其相关的危险因素 
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     依托集团云医院管理平台，为会员建立个人电子健康档案 , 一年内保持更新，支持随时调阅
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      终身<br/>
+                      不限次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p style=>体检方案</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0">
+                     根据客户的家族病史、既往病史和目前的健康情况，量身定制个性化体检方案，最大程度地发现潜在疾病风险
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                      针对客户体检报告进行详细解析，深度分析体检异常指标，评估发病风险，并出具书面体检解读报告 
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年1次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p>健康管理</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0">
+                     根据客户体检结果，为客户私人定制日常行为、运动、饮食、心理等全方位健康管理方案
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     指导客户实施健康管理方案，根据客户情况和需求，进行全年生活作息和健康行为干预
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年内<br/>
+                      不限次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     全年不定期对客户进行回访，掌握客户近期健康状况，评估健康管理方案的效果，并根据客户情况及时调整指导方案
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年内<br/>
+                      不限次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p class="ta_c" style="max-height:100px;margin:auto 10px">口腔保健<span class="f12">广州<br/>深圳</span></p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0">
+                     口腔体检
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     口腔全景片（曲面断层片）
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     口腔专业洁治（洗牙）
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年2次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p style=>专家服务</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0 jc-s">
+                     集团专家快速精准预约及一对一面诊
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table jc-s">
+                     根据客户病情和需求，精准匹配科室和权威专家
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年内<br/>
+                      不限次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="greendot mt15">备注：如一年内各项服务超过套餐次数，则按该项服务正常收费的8.5折优惠收取。</p>
+
+            </div>
+          </div>
+        </li>
+
+        
+        <li class=" flex-c col">
+          <div class="label h25 bcfff intro kd-border-b flex-c jc-b f14" onclick="Anima('4')">
+              家庭医生
+              <i id="arrow4" class="icon-main_left c999"><img src="images/ico.png"></i>
+          </div>
+          <div id="intro4" class=" bceef1f3 kd-border-b anime-downwards">
+            <div>
+              <p style="padding-top:0">家庭医生即私人保健医生，以专家团队作为支撑，每一个家庭医生客户有固定的一名全科医生作为家庭医生，为客户提供私人订制的咨询、问诊、检查、转诊、治疗康复及健康管理的全流程健康服务，解决日常生活中80%的健康问题，节省精力时间，改善健康状况，最终达到提升生活质量的目标。</p>
+              
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p style="max-height:30px">体检服务</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="border-dot border-left0 lastbox longbox flex1">
+                      由全科总顾问中山大学孙逸仙纪念医院高级保健专家陈庆瑜教授根据客户目前的健康情况、既往病史和家族病史，亲自量身定制个性化体检方案，最大程度发现潜在疾病风险
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="border-table lastbox longbox flex1">
+                      根据个性化体检方案安排合理的个性化体检一次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="border-table lastbox longbox flex1">
+                      由陈庆瑜教授带领的专家团队对体检报告详细解析，深度分析体检异常指标，评估发病风险，并出具书面体检解读报告
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+               <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p>健康管理</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="border-dot border-left0 lastbox longbox flex1">
+                      根据客户体检结果，为客户私人定制日常行为、运动、饮食、心理等全方位健康管理方案
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="border-table lastbox longbox flex1">
+                      指导客户实施健康管理方案，根据客户情况和需求，进行全年生活作息和健康行为干预
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="border-table lastbox longbox flex1">
+                      全年不定期对客户进行回访，掌握客户近期健康状况，评估健康管理方案的效果，并根据客户情况及时调整指导方案
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p class="ta_c" style="max-height:100px;margin:auto 10px">口腔保健<span class="f12">广州<br/>深圳</span></p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0">
+                     口腔体检
+                    </div>
+                    <div class="border-dot border-left0 lastbox ">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     口腔全景片（曲面断层片）
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年1次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table">
+                     口腔专业洁治（洗牙）
+                    </div>
+                    <div class="border-table lastbox" width="50px">
+                      1年2次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c pt5 pb5">
+                  <p style="">家庭医生</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c h100">
+                    <div class="flex1 border-dot border-left0">
+                     专属家庭医生为客户解答个人健康咨询
+                    </div>
+                    <div class="border-dot border-left0 lastbox">
+                      1年内<br/>
+                      不限次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p style=>全科医生</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="border-dot border-left0 lastbox longbox flex1" style="height:55px">
+                      客户有就诊需求时，免费预约博德嘉联门诊部全科医生看诊（治疗费、检查费、药费除外）
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hhk_intro-table flex-c bcfff">
+                <div class="greenbox flex-c">
+                  <p>专家服务</p>
+                </div>
+                <div class="w100">
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-dot border-left0 col">
+                      <p class="greendot">安排客户与专家进行面对面沟通，建立客户与专家的相互信任，专家充分了解客户的病史、家族史和病情，解答客户对病情的疑虑，建立客户的治疗信心</p>
+                      <p class="greendot">医疗专家对客户的详细问诊时长为20-30分钟</p>
+                      <p class="greendot">由医疗专家为客户诊断疾病，制定个性化治疗方案并指导治疗</p>
+                    </div>
+                    <div class="border-dot border-left0 lastbox jc-c">
+                      1年6次
+                    </div>
+                  </div>
+                  <div class="w100 flex-c">
+                    <div class="flex1 border-table border-left0 col">
+                      <p class="greendot">为客户安排入院并进行治疗，建立客户与医生的相互信任<br/>治疗团队同时为客户提供全程的住院关怀，每天至少与客户交流一次，解答客户的疑虑，帮助客户了解病情并建立治疗信心</p>
+                      <p class="greendot">由专家及其团队为客户制定个性化治疗方案，向客户解释制定该方案的原因和优势，最终由医疗专家与客户和客户的家属共同讨论并决定最终方案</p>
+                      <p class="greendot">专家为患者制定个性化手术方案，并由专家亲自主刀对患者进行手术</p>
+                      <p class="greendot">手术前，治疗团队与患者和家属讨论手术方案，并协助患者和家属了解手术的必要性、采用的术式、手术中可能使用的附加贵重耗材、可能产生的并发症、合并症和意外情况等，征得患者或家属同意并签字</p>
+                      <p class="greendot">手术后，安排治疗团队按照围手术期康复的临床规范指导患者和家属进行治疗，并交代术后需要注意的问题和预后的情况</p>
+                    </div>
+                    <div class="border-table lastbox jc-c">
+                      1年2次
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="greendot mt15">备注：如一年内各项服务超过套餐次数，则按该项服务正常收费的8.5折优惠收取。</p>
+
+            </div>
+          </div>
+        </li>
+
+    </ul>
+
+
+  </div>
+</div>
+<script type="text/javascript">
+    var myScroll;
+    function loadIscroll() {
+        setTimeout(function(){
+            myScroll = new IScroll('#wrapper',{hScrollbar:false,vScrollbar:false});
+        },100);
+    }
+</script>
+
+<div class="footdiv" id="footdiv">
+        <div class="btn_parent">
+            <a class="new_blu-btn" href="javascript:void(0);">立即购买</a>
+        </div>
+</div>
+
+</div>
+<!-- 引入加载中 -->
+ 
+<!-- 加载中样式 -->
+<style type="text/css">
+.m18{margin: 18px 0 8px;}
+.m35{margin: 35px 0 8px !important;}
+</style>
+
+<!-- 加载中html -->
+<div class="kd-loading-block"  id="kd-loading-block">
+    <div class="kd-loading-cnt">
+        <i class="kd-loading-bright"></i>
+        <p class="kd-loading-text"></p>
+    </div>
+</div>
+
+<!-- 加载中的js -->
+<script type="text/javascript">
+function showLoading(tip){
+    if(Util.checkNull(tip)){
+        $(".kd-loading-bright").addClass("m35");
+        $(".kd-loading-text").text("");
+    } else {
+        $(".kd-loading-bright").addClass("m18");
+        $(".kd-loading-text").text(tip);
+    }
+    document.getElementById("kd-loading-block").style.display = "-webkit-box";
+}
+function hideLoading(){
+    document.getElementById("kd-loading-block").style.display = "none";
+}
+</script>
+<script type="text/javascript">
+    function bodyOnload() {
+    }
+  function Anima(i){
+        if($("#arrow"+i).hasClass('turnup')||$("#arrow"+i).hasClass('turndown')){
+          $("#arrow"+i).toggleClass('turnup');
+          $("#arrow"+i).toggleClass('turndown');
+        }else{
+          $("#arrow"+i).addClass('turnup');
+        };
+        $("#intro"+i).animate({height: 'toggle', opacity: 'toggle'}, "normal",function() {
+          myScroll.refresh();
+        });
+  }
+</script>
+
+<!-- 通用页面底部 -->
+
+<script type="text/javascript">
+var tenantId='';
+var tenantName = '';
+var isWeixincity=''==='wxcity';
+var isShowTenantName = 'false' === 'true';
+var hospitalShortName = '';
+
+//去掉300ms延迟
+FastClick.attach(document.body);
+
+function load() {
+    //显示title、copyright
+    var config = {};
+    if(isShowTenantName && hospitalShortName){
+        config.hospitalShortName = hospitalShortName;
+    }
+    showTitle(config);
+
+    //页面特有的onload
+    if(typeof bodyOnload != "undefined"){
+        bodyOnload();
+    }
+
+    if(typeof CalendarHandler != "undefined"){
+        CalendarHandler();
+    }
+    loadIscroll();
+
+    //如果是从城市服务进去且session里面的hospitalName不为空，则显示
+    if(!Util.checkNull(tenantName)){
+        if(isWeixincity){
+            showName(tenantName);
+        }
+    }
+    //显示广告
+    // if(typeof showAd != "undefined"){
+    //     showAd();
+    // }
+
+    //打印页面操作日志
+    var $pageLogs = $("#pageOperatingLogs_pageId");
+    if(typeof $pageLogs != "undefined" && !Util.checkNull($pageLogs.val())) {
+        ajaxToPrintPageLogs();
+    }
+}
+
+function showName(hospitalName){
+    document.getElementById("wrapper").style.bottom = "40px";
+    $(".footer-hospitial-name").html(hospitalName);
+    $(".footer-hospitial-name").show();
+}
+
+/**
+ * 异步打印前端js报错的日志
+ */
+function ajaxPrintJsError(sMsg,sUrl,sLine,sCol) {
+    $.ajax( {
+        url: Util.getBasePath() + "/pageStatisticsLogs!printJsErrorLogs.do",
+        data:{
+            "jsErrorLogs.sMsg": sMsg,
+            "jsErrorLogs.sUrl": sUrl,
+            "jsErrorLogs.sLine": sLine,
+            "jsErrorLogs.sCol": sCol
+        },
+        type:'post',
+        cache:false,
+        dataType:'json',
+        success:function(data) {
+         },
+         error : function() {
+         }
+    });
+}
+
+// 捕捉所有的js error
+window.onerror = function(sMsg,sUrl,sLine,sCol) {
+    //暂时排除Uncaught ReferenceError: WeixinJSBridge is not defined 这个错误
+    if(Util.checkNull(sMsg) || sMsg.indexOf('WeixinJSBridge') != -1) {
+        return
+    }
+    ajaxPrintJsError(sMsg,sUrl,sLine,sCol);
+    return false;
+}
+
+</script>
+<!-- 弱提示 -->
+<div class="footer-hospitial-name" style="display:none"></div>
+<div class="fast_note"></div>
+<div class="footer3"></div>
+<div id="mask" style="position:absolute; top:0px; display:none"></div>
+<!-- 新版调用接口需要用到的token -->
+<input type="hidden" id="userToken" value=""/>
+</body>
+</html>

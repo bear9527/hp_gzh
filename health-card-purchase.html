@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>健康档案</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet"></link>
+    <style>
+    body{
+      font-size: 13px;
+    }
+    .fl{
+    float: left;
+    margin-right: 4px;
+    }
+    .fr{
+    float: right;
+    margin-right: 4px;
+        color: #999999;
+    }
+    #navbar{padding: 0;
+    position: fixed;
+    background: #ffa500;
+    width: 100%;
+    height: 45px;
+    top: 0;
+    z-index: 1000; }
+    #navbar p{color:#fff;}
+    #navbar a{width: 100%;padding:10px;}
+    #navbar a.weui-media-box:active {
+      background-color: #ffa500;
+    }
+    #yes{
+      background: #f4a400;
+      border-radius: 50px;
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .light_yellow{
+      color: #f4a400;
+    }
+    .agile{
+      float: right;
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+    }
+    .down_icon{
+      background: url(./images/down.png)
+    }
+    .up_icon{
+      background: url(./images/up.png)
+    }
+    .weui-actionsheet {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    }
+    #form_body {
+    margin-top: 45px;
+    margin-bottom: 34px;
+      }
+    #people_list .weui-cells {
+     margin-top: 0px; 
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1001;
+    width: 100%;
+    display: none;
+    }
+    .weui-cells_radio .weui-cell__ft {
+    padding-left: 0.35em;
+    width: 20px;
+    }
+    .gray{
+      color:#999;
+    }
+    .yellow{
+      color:#ffa500;
+    }
+    .drakgray{
+      color:#7f7f7f;
+    }
+    .r_text{width: 80%;}
+    .weui-prompt-input {
+    padding: 0px 0px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+    height: 12em;
+    width: 100%;
+    margin-top: 10px;
+    }
+    input{
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    #text_up{
+      height: 77px;
+      line-height: 77px;
+      color:#999;
+    }
+
+    /*弹窗*/
+    #one_list{
+    width: 100%;
+    height: 102%;
+    position: fixed;
+    z-index: 100;
+    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    top: -21px;
+    top:100%;
+    display: none;
+    }
+
+    #one_list_right{
+        height: 100%;
+        /*float: right;*/
+        background: #fff;
+    }
+    #one_list_left {
+        width: 100%;
+        height: 20%;
+        /* float: left; */
+        font-size: 2em;
+        color: #626262;
+        position: relative;
+    }
+    #form_body #cells_title{
+      margin-top:0; 
+    }
+    .footer{
+      bottom: 0.01em;
+      background: #fff;
+    }
+    .top_small{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    padding: 0;
+    }
+    .top_small label{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    text-align: center;
+    color:#ffa500;
+    line-height: 20px;
+    }
+    .color_orange{
+      color:orange;
+    }
+    .color_red{
+      color:red;
+    }
+    .weui-dialog {
+    position: fixed;
+    z-index: 5000;
+    width: 91%;
+    max-width: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+    }
+    .weui-dialog__title {
+    font-weight: 400;
+    font-size: 15px;
+    }
+
+    .weui-dialog .weui-dialog__bd {
+    padding: 0 0.6em 0.8em;
+    min-height: 40px;
+    font-size: 15px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #999999;
+    text-align: left;
+    overflow: auto;
+    height: 333px;
+    }
+    .weui-dialog__btn {
+    color: #ffbe00;
+    }
+    .cir{
+        width: 16px;
+        height: 16px;
+    }
+    .weui-loadmore_line {
+    border-top: 1px solid #E5E5E5;
+    margin-top: 1em;
+    }
+
+    #sfbz_body{
+        width: 96%;
+        margin:0 auto;
+    }
+    #sfbz_body .sfbz_row{
+        height: 50px;
+        border:1px solid orange;
+        margin-bottom: 6px;
+        color:orange;
+    }
+    #sfbz_body .sfbz_row .sfbz_left{
+        width: 100%;
+        float: left;
+        line-height: 25px;
+    }
+    .sfbz_active{
+        background: orange;
+        color:#fff!important;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .fr_right{
+        text-align:right;
+        font-size: 14px;
+        color:#000;
+    }
+    .sm{
+        margin:0 10px;
+    }
+    #btn_body .btn_left{
+        width: 50%;
+        height: 50px;
+        float: left;
+        line-height: 25px;
+    }
+    #btn_body .btn_right{
+        width: 50%;
+        height: 50px;
+        text-align: center;
+        float: left;
+        line-height: 50px;
+        background: #ccc;
+    }
+    .pl{
+        padding:0 0 0 10px; 
+    }
+    .btn_active{
+        background: orange!important;
+    }
+</style>
+</head>
+<body ontouchstart>
+    <div id="navbar" class="weui-cell">
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <p class="ys fl">当前就诊人</p><p class="fl">:</p>
+          <p class="fl">pgone</p>
+          <i id="agile" class="agile down_icon"></i>
+          <p class="fr">请选择就诊人</p>
+        </div>
+      </a>
+
+    </div>
+      <div id="people_list">
+        <div class="weui-cells weui-cells_radio">
+            <label class="weui-cell weui-check__label" for="x11">
+                <div class="weui-cell__bd">
+                    <p class="fl">周杰伦</p>
+                    <p class="fr">66666</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" name="radio1" id="x11">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="x12">
+
+                <div class="weui-cell__bd">
+                    <p class="fl">周杰伦</p>
+                    <p class="fr">777</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <a href="javascript:;" class="weui-btn weui-btn_default color_orange"><img class="cir" src="images/circle.png" alt=""> 添加申请人</a>
+        </div>
+      </div>
+    
+    <div id="form_body" class="weui-cells weui-cells_form">
+          
+            <div class="weui-cell gray">
+                <div class="weui-cell__hd"><label class="weui-label gray">性别</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" disabled="disabled">
+                </div>
+            </div>
+            <div class="weui-cell gray">
+                <div class="weui-cell__hd"><label class="weui-label gray">年龄</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" disabled="disabled">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">职业</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" placeholder="请输入职业(必填)">
+                </div>
+            </div>
+        <a class="weui-cell weui-cell_access" href="health-product.html">
+            <div class="weui-cell__bd">
+              <p>套餐选择 <img class="cir" src="images/what.png" alt=""></p>
+            </div>
+            <div class="weui-cell__ft">
+            </div>
+        </a>
+    </div>
+    
+    <div class="weui-cells__title">收费标准</div>
+        <div class="weui-panel weui-panel_access">
+              <div id="sfbz_body" class="weui-panel__bd text-center">
+                <div class="sfbz_row">
+                    <div class="sfbz_left"><p>基础版</p><p>健康档案基础服务</p></div>
+                    <!-- <div class="sfbz_right"><p>健康档案基础服务</p></div> -->
+                </div>
+                <div class="sfbz_row">
+                    <div class="sfbz_left"><p>大众版</p><p>健康管家</p></div>
+                    <!-- <div class="sfbz_right"><p>健康管家</p></div> -->
+                </div>
+                <div class="sfbz_row">
+                    <div class="sfbz_left"><p>精英版</p><p>家庭医生</p></div>
+                    <!-- <div class="sfbz_right"><p>家庭医生</p></div> -->
+                </div>
+              </div>
+        </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">服务期限</label></div>
+        <div class="weui-cell__bd fr">
+            <p class="fr_right">1年</p>
+            <p class="fr">2017-09-30-2018-09-30</p>
+        </div>
+    </div>
+    <div class="weui-loadmore weui-loadmore_line">
+      <span class="weui-loadmore__tips">服务说明</span>
+    </div>
+    <!-- 弹窗 -->
+    <div>
+        <div class="weui-mask" id="iosMask" style="display: none; "></div>
+    </div>
+    <div class="sm">
+        <p>1、健康管家卡服务有效期为1年，从会员购买之日起计算。</p>
+        <p>2、健康管家卡每人每年限购1次，一年内不可重复购买。</p>
+        <p>3、健康管家卡服务仅限会员本人使用，不可转赠他人。</p>
+        <p>4、健康管家卡以身份证号作为会员的唯一识别标志，会
+        员在享受“口腔保健”服务时，需出示会员卡(实体卡或虚
+        拟卡均可)或本人身份证。</p>
+        <p>5、为保证服务质量，会员享受“口腔保健”服务，需至少
+        提前1个工作日进行预约。</p>
+        <!-- <p>6、由于专家时间宝贵，“专家看诊"预约成功后，如需取
+        消，须提前1个工作日拨打客服热线400-963-6386 进行
+        取消。会员未按规定取消一次，或在规定的时间内取消超
+        过三次，视为会员已消费该项服务。</p> -->
+    </div>
+
+    <div id="btn_body">
+        <div class="btn_left">
+            <p class="pl">￥<span>200.0</span></p>
+            <p class="pl">基础版</p>
+        </div>
+        <div id="submit" class="btn_right"><p>去支付</p></div>
+    </div>
+    <div id="one_list" class="weui-cells" style="top: 3%;">
+        <div id="one_list_left" class="text-center">
+            <div class="retur"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+    // toast
+    $(function(){
+        var $toast = $('#toast');
+        $('#showToast').on('click', function(){
+            if ($toast.css('display') != 'none') return;
+
+            $toast.fadeIn(100);
+            setTimeout(function () {
+                $toast.fadeOut(100);
+            }, 2000);
+        });
+
+
+        $("#sfbz_body .sfbz_row").on("click",function(){
+            $(this).addClass("sfbz_active").siblings().removeClass("sfbz_active");
+            $(".btn_right").addClass("btn_active");
+            
+        });
+
+        $("#submit").click(function(){
+            var txt = '1、过去二年内是否曾因接受健康检查有异常情形而被建议接受其它检查或治疗? (也可提供该检查报告以供参考)2、最近二个月内是否曾因受伤或生病接受医师诊治或用药?<br>3、过去五年内是否曾因受伤或生病住院治疗七日以上?<br>4、是否曾患有下列疾病或因下列疾病而接受医师诊治? 用药?(1)高血压症、先天性心脏病、冠心病、心肌炎、心肌病、主动脉血管瘤，心脏瓣膜疾病、心律失常?(2)脑中风(脑出血、脑拴塞、脑梗塞)、短暂性脑缺血、脑部疾病、脑动脉血管瘤、脑静动脉畸形、多发性硬化症、癫痫、肌肉萎缩症、脊髓病变、重症肌无力、巴金森氏症、精神病?(3)肺气肿、支气扩张症、尘肺症、肺结核?(4)肝炎、肝炎病毒携带者、肝内结石、肝硬化、肝功能异常、胆道感染或结石?(5)肾脏炎、肾病症候群、肾机能不全、尿毒症、肾囊肿?(6)视网膜出血或剥离、视神经病变?(7)癌症(恶性肿瘤) 或末经证实为良性或恶性之肿瘤、胃或大肠息肉?(8)血友病、白血病、贫血、紫斑症?(9)糖尿病、类风湿性关节炎、肢端肥大症、脑下垂体机能亢进或低下、肾上腺功能亢进或低下、甲状腺机能亢进或减退?(10)红斑性狼疮、胶原症?(11)爱滋病或爱滋病携带者?(12)酒精或药物溢用成瘾、眩晕症、脑震荡、肢体麻痹?(13)食道、胃、十二指肠溃疡或出血、萎缩性胃炎、溃疡性大肠炎、胰脏炎?(14)肝脓疡、黄疽，肝或脾肿大?(15)慢性支气管炎、哮喘、肺源性心脏病、肺脓疡、肺栓塞?(16)痛风、高血脂症、青光眼、白内障、先天性疾病、遗传性疾病、地方病、职业病、药物过敏史?(17)乳腺炎、乳漏症、子宫肌瘤、子宫颈癌、卵巢囊肿、卵巢癌、异位妊娠、乳腺增生(包块、肿块)<br>5、目前身体状况是否失明，聋哑，言语、咀嚼障碍、四肢机能障碍?<br>6、是否己确知怀孕? 如是，己经几月? (女性被保险人回答)<br>7、投保前是否曾患有、或被告知有下列症状; 或因下列症状接受治疗?慢性咳嗽、咯血、胸闷、心慌、气短、浮肿、声嘶贫血、哑、吞咽困难、呕血、黑便、腹痛、黄疸、肿块、血尿、蛋白尿、皮肤淤斑、不明原因皮下出晕厥、抽搐、昏血点、渐进性消瘦、持续性头痛、迷、长期发热、高度近视<br>8、是否有跛行、脊柱或胸廓畸形、四肢(含手指、足址) 缺损或畸形、听力障碍、嗅觉障碍、中枢神经系统障碍<br>9、是否曾被保险公司解除合同或申请人身保险而被延期、拒保或附加条件承保?<br>10、目前是否有已参加或正在申请中的其它人身保险? 如有，请在备注栏中告知承保公司、保险险种名称、保险金额、保单生效时间。<br>11、父母兄弟姐妹中是否有人曾患有遗传性疾病、结核病、肝炎、肝硬化、癌症、糖尿病、肾病、心脏病、中风、高血压、动脉硬化、精神病或曾是乙肝、丙肝病毒携带者或60 岁以前因病身故?';
+            // $.confirm({
+            //   title: '投保人确认被保险人没有一下情况',
+            //   text: txt,
+
+            //   onOK: function () {
+            //     //点击确认
+            //     $.toast("提交成功");
+            //   },
+            //   onCancel: function () {
+            //   }
+            // });
+
+            $.modal({
+              title: "投保人确认被保险人没有一下情况",
+              text: txt,
+              buttons: [
+                { text: "有过/现在有", className: "default", onClick: function(){ $.toast("很抱歉，您不能购买该服务", "text");} },
+                { text: "健康", onClick: function(){ console.log(1)} },
+              ]
+            });
+
+        });
+
+    });
+
+
+    // ios
+    $(function(){
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $("#one_list").css("display","none");
+            $("#agile").removeClass("up_icon");
+            $("#people_list .weui-cells").css("display","none");
+        }
+
+        $("#agile").stop().on("click", function(){
+            $("#agile").toggleClass("up_icon");
+            var istrue=$("#agile").hasClass("up_icon");
+            if(istrue == true){
+              $("#one_list").css("display","block");
+              $("#people_list .weui-cells").css("display","block");
+            }else{
+              $("#one_list").css("display","none");
+              $("#people_list .weui-cells").css("display","none");
+            }
+        });
+    });
+
+    $(function(){
+        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            $uploaderInput = $("#uploaderInput"),
+            $uploaderFiles = $("#uploaderFiles")
+            ;
+
+        $uploaderInput.on("change", function(e){
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+        });
+        $uploaderFiles.on("click", "li", function(){
+            $galleryImg.attr("style", this.getAttribute("style"));
+            $gallery.fadeIn(100);
+        });
+        $gallery.on("click", function(){
+            $gallery.fadeOut(100);
+        });
+
+    });
+    </script>
+</body>
+</html>

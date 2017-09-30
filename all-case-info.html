@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>所有病例资料</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <style>
+    body{
+        background: #efefef;
+    }
+    .frist_row{
+    margin-bottom:20px;
+    background: #fff; 
+    height: 100px;
+    width: 100%;
+    }
+    .frist_row p{  
+    
+    float: left;
+    }
+    .frist_row .name{  
+    color:orange;
+    }
+    .frist_row div{
+    padding: 10px;  
+    }
+    .weui-uploader__bd{
+        margin: 0;
+    }
+
+
+    </style>
+</head>
+<body ontouchstart>
+    <div class="frist_row">
+        <div><p class="name">周杰伦</p><p>,您好，目前您已经上传<span id="len">3</span>份病例资料</p>
+        <p>上传更多资料便于医生更准确的判断您的病情为您提供有针对性的治疗方案。</p></div>
+    </div>
+    <div class="weui-cell__bd">
+        <div class="weui-uploader">
+                              <!-- <div class="weui-uploader__hd">
+                                  <p class="weui-uploader__title">图片上传</p>
+                                  <div class="weui-uploader__info">0/2</div>
+                              </div> -->
+            <div class="weui-uploader__bd">
+                <ul class="weui-uploader__files" id="uploaderFiles">
+                                      <!-- <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                                          <div class="weui-uploader__file-content">
+                                              <i class="weui-icon-warn"></i>
+                                          </div>
+                                      </li> -->
+                </ul>
+                <div class="weui-uploader__input-box">
+                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+               </div>
+              <!-- <div id="text_up"><p>请上传检验检查报告</p></div> -->
+          </div>
+        </div>
+    </div>
+    <div class="weui-footer weui-footer_fixed-bottom footer">
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+        $(function(){
+        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            $uploaderInput = $("#uploaderInput"),
+            $uploaderFiles = $("#uploaderFiles")
+            ;
+
+        $uploaderInput.on("change", function(e){
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+        });
+        $uploaderFiles.on("click", "li", function(){
+            $galleryImg.attr("style", this.getAttribute("style"));
+            $gallery.fadeIn(100);
+        });
+        $gallery.on("click", function(){
+            $gallery.fadeOut(100);
+        });
+
+    });
+    </script>
+</body>
+</html>

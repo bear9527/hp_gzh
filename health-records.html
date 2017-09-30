@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>健康档案</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet"></link>
+    <style>
+    body{
+      font-size: 13px;
+    }
+    .fl{
+    float: left;
+    margin-right: 4px;
+    }
+    .fr{
+    float: right;
+    margin-right: 4px;
+        color: #999999;
+    }
+    #navbar{padding: 0;
+    position: fixed;
+    background: #ffa500;
+    width: 100%;
+    height: 45px;
+    top: 0;
+    z-index: 1000; }
+    #navbar p{color:#fff;}
+    #navbar a{width: 100%;padding:10px;}
+    #navbar a.weui-media-box:active {
+      background-color: #ffa500;
+    }
+    #yes{
+      background: #f4a400;
+      border-radius: 50px;
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .light_yellow{
+      color: #f4a400;
+    }
+    .agile{
+      float: right;
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+    }
+    .down_icon{
+      background: url(../images/down.png)
+    }
+    .up_icon{
+      background: url(../images/up.png)
+    }
+    .weui-actionsheet {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    }
+    #form_body {
+    /*margin-top: 45px;*/
+    margin-bottom: 34px;
+      }
+    #people_list .weui-cells {
+     margin-top: 0; 
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1001;
+    width: 100%;
+    display: none;
+    }
+    .weui-cells_radio .weui-cell__ft {
+    padding-left: 0.35em;
+    width: 20px;
+    }
+    .gray{
+      color:#999;
+    }
+    .yellow{
+      color:#ffa500;
+    }
+    .drakgray{
+      color:#7f7f7f;
+    }
+    .r_text{width: 80%;}
+    .weui-prompt-input {
+    padding: 0px 0px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+    height: 12em;
+    width: 100%;
+    margin-top: 10px;
+    }
+    input{
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    #text_up{
+      height: 77px;
+      line-height: 77px;
+      color:#999;
+    }
+
+    /*弹窗*/
+    #one_list{
+    width: 100%;
+    height: 102%;
+    position: fixed;
+    z-index: 100;
+    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    top: -21px;
+    top:100%;
+    display: none;
+    }
+
+    #one_list_right{
+        height: 100%;
+        /*float: right;*/
+        background: #fff;
+    }
+    #one_list_left {
+        width: 100%;
+        height: 20%;
+        /* float: left; */
+        font-size: 2em;
+        color: #626262;
+        position: relative;
+    }
+    #form_body #cells_title{
+      margin-top:0; 
+    }
+    .footer{
+      bottom: 0.01em;
+      background: #fff;
+    }
+    .top_small{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    padding: 0;
+    }
+    .top_small label{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    text-align: center;
+    color:#ffa500;
+    line-height: 20px;
+    }
+    .color_orange{
+      color:orange;
+    }
+    .color_red{
+      color:red;
+    }
+
+    .weui-dialog .weui-dialog__bd {
+    padding: 0 1.6em 0.8em;
+    min-height: 40px;
+    font-size: 15px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #999999;
+    text-align: left;
+    overflow: auto;
+    height: 200px;
+    }
+    .weui-dialog__btn {
+    color: #ffbe00;
+    }
+        </style>
+</head>
+<body ontouchstart>
+    <div id="form_body" class="weui-cells weui-cells_form">
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">身高</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="身高"><span class="">cm</span>
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">体重</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="体重"><span class="">kg</span>
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">血型</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="bloodtype" placeholder="点击选择血型">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">过敏史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="gms" placeholder="请填写过敏史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">疾病史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="jbs" placeholder="请填写疾病史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">手术史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="sss" placeholder="请填写手术史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">外伤史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="wss" placeholder="请填写外伤史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">输血史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="sxs" placeholder="请填写输血史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">残疾情况</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="cjqk" placeholder="请填写残疾情况">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">遗传病史</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="ycbs" placeholder="请填写遗传病史">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">是否抽烟</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="smoking" placeholder="点击选择是否抽烟">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">是否喝酒</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="whate" placeholder="点击选择是否喝酒">
+                </div>
+            </div>
+            <div class="weui-cell yellow">
+                <div class="weui-cell__hd"><label class="weui-label">末次月经时间(仅女性)</label></div>
+                <div class="weui-cell__bd drakgray">
+                    <input class="weui-input" type="text" id="datetime-picker" placeholder="点击选择月经时间">
+                </div>
+            </div>
+                  <a id="submit" href="javascript:;" class="weui-btn weui-btn_default">保存</a>
+          </div>
+        </div>
+    <div class="weui-footer weui-footer_fixed-bottom footer">
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
+    <!-- 弹窗 -->
+    <div>
+        <div class="weui-mask" id="iosMask" style="display: none; "></div>
+    </div>
+
+    <div id="one_list" class="weui-cells" style="top: 3%;">
+        <div id="one_list_left" class="text-center">
+            <div class="retur"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script>
+        $(function(){
+          $("#submit").click(function(){
+            $.toast("提交成功");
+          });
+         
+
+        });
+
+
+    // toast
+    $(function(){
+        var $toast = $('#toast');
+        $('#showToast').on('click', function(){
+            if ($toast.css('display') != 'none') return;
+
+            $toast.fadeIn(100);
+            setTimeout(function () {
+                $toast.fadeOut(100);
+            }, 2000);
+        });
+    });
+
+    // loading
+    $(function(){
+        var $loadingToast = $('#loadingToast');
+        $('#showLoadingToast').on('click', function(){
+            if ($loadingToast.css('display') != 'none') return;
+
+            $loadingToast.fadeIn(100);
+            setTimeout(function () {
+                $loadingToast.fadeOut(100);
+            }, 2000);
+        });
+    });
+
+    // ios
+    $(function(){
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $("#one_list").css("display","none");
+            $("#agile").removeClass("up_icon");
+            $("#people_list .weui-cells").css("display","none");
+        }
+
+        $("#agile").stop().on("click", function(){
+            $("#agile").toggleClass("up_icon");
+            var istrue=$("#agile").hasClass("up_icon");
+            if(istrue == true){
+              $("#one_list").css("display","block");
+              $("#people_list .weui-cells").css("display","block");
+            }else{
+              $("#one_list").css("display","none");
+              $("#people_list .weui-cells").css("display","none");
+            }
+        });
+
+
+
+        $("#smoking").select({
+          title: "是否吸烟",
+          items: ["每天1根", "每天2根","每天3根","3根以上"]
+        });
+        $("#bloodtype").select({
+          title: "选择血型",
+          items: ["不详","A型", "B型","AB型","O型","RH阳性","RF阴性"]
+        });
+        
+        $("#whate").select({
+          title: "选择民族",
+          items: ["无","每月少于三次","每月大于三次","每天"]
+        });
+        $("#datetime-picker").calendar();
+        $("#jbs").click(function(){
+          $.prompt({
+            title: '疾病史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#jbs").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#sss").click(function(){
+          $.prompt({
+            title: '手术史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#sss").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#wss").click(function(){
+          $.prompt({
+            title: '外伤史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#wss").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#sxs").click(function(){
+          $.prompt({
+            title: '输血史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#sxs").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#gms").click(function(){
+          $.prompt({
+            title: '过敏史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#gms").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#cjqk").click(function(){
+          $.prompt({
+            title: '残疾情况',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#cjqk").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+        $("#ycbs").click(function(){
+          $.prompt({
+            title: '遗传病史',
+            // text: '内容文案',
+            textarea: '输入框默认值',
+            // empty: false, // 是否允许为空
+            onOK: function (input) {
+              //点击确认
+              $("#ycbs").val($("#weui-prompt-input").val());
+            },
+            onCancel: function () {
+              //点击取消
+              //$.closeprompt(); //关闭对话框
+            }
+          });
+          $("#weui-prompt-input").remove(); //去除原始输入框
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea>');
+          //重新拼接应textarea.
+        });
+
+    });
+
+    $(function(){
+        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            $uploaderInput = $("#uploaderInput"),
+            $uploaderFiles = $("#uploaderFiles")
+            ;
+
+        $uploaderInput.on("change", function(e){
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+        });
+        $uploaderFiles.on("click", "li", function(){
+            $galleryImg.attr("style", this.getAttribute("style"));
+            $gallery.fadeIn(100);
+        });
+        $gallery.on("click", function(){
+            $gallery.fadeOut(100);
+        });
+
+    });
+    </script>
+</body>
+</html>

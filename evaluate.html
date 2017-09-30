@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>健康档案</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet"></link>
+    <style>
+    body{
+      font-size: 13px;
+    }
+    .fl{
+    float: left;
+    margin-right: 4px;
+    }
+    .fr{
+    float: right;
+    margin-right: 4px;
+        color: #999999;
+    }
+    #navbar{padding: 0;
+    position: fixed;
+    background: #ffa500;
+    width: 100%;
+    height: 45px;
+    top: 0;
+    z-index: 1000; }
+    #navbar p{color:#fff;}
+    #navbar a{width: 100%;padding:10px;}
+    #navbar a.weui-media-box:active {
+      background-color: #ffa500;
+    }
+    #yes{
+      background: #f4a400;
+      border-radius: 50px;
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .light_yellow{
+      color: #f4a400;
+    }
+    .agile{
+      float: right;
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+    }
+    .down_icon{
+      background: url(./images/down.png)
+    }
+    .up_icon{
+      background: url(./images/up.png)
+    }
+    .weui-actionsheet {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    }
+    #form_body {
+    margin-top: 45px;
+    margin-bottom: 34px;
+      }
+    #people_list .weui-cells {
+     margin-top: 0px; 
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1001;
+    width: 100%;
+    display: none;
+    }
+    .weui-cells_radio .weui-cell__ft {
+    padding-left: 0.35em;
+    width: 20px;
+    }
+    .gray{
+      color:#999;
+    }
+    .yellow{
+      color:#ffa500;
+    }
+    .drakgray{
+      color:#7f7f7f;
+    }
+    .r_text{width: 80%;}
+    .weui-prompt-input {
+    padding: 0px 0px;
+    border: 0px solid #ccc;
+    box-sizing: border-box;
+    height: 12em;
+    width: 100%;
+    margin-top: 10px;
+    }
+    input{
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    #text_up{
+      height: 77px;
+      line-height: 77px;
+      color:#999;
+    }
+
+    /*弹窗*/
+    #one_list{
+    width: 100%;
+    height: 102%;
+    position: fixed;
+    z-index: 100;
+    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    top: -21px;
+    top:100%;
+    display: none;
+    }
+
+    #one_list_right{
+        height: 100%;
+        /*float: right;*/
+        background: #fff;
+    }
+    #one_list_left {
+        width: 100%;
+        height: 20%;
+        /* float: left; */
+        font-size: 2em;
+        color: #626262;
+        position: relative;
+    }
+    #form_body #cells_title{
+      margin-top:0; 
+    }
+    .footer{
+      bottom: 0.01em;
+      background: #fff;
+    }
+    .top_small{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    padding: 0;
+    }
+    .top_small label{
+      height: 20px;
+    width: 100%;
+    font-size: 10px;
+    background: #ffe7cf;
+    text-align: center;
+    color:#ffa500;
+    line-height: 20px;
+    }
+    .color_orange{
+      color:orange;
+    }
+    .color_red{
+      color:red;
+    }
+
+    .weui-dialog .weui-dialog__bd {
+    padding: 0 1.6em 0.8em;
+    min-height: 40px;
+    font-size: 15px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: #999999;
+    text-align: left;
+    overflow: auto;
+    height: 200px;
+    }
+    .weui-dialog__btn {
+    color: #ffbe00;
+    }
+
+    #ico_list{margin-bottom: 20px;}
+    #ico_list .weui-cell__hd img{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+    .small_font{
+        font-size: 13px;
+        color:#666;
+    }
+    .fim_font{
+
+    }
+    /*选项卡*/
+    .weui-tab {
+    position: relative;
+    height: 100%;
+    margin: 45px 0 0 0;
+    }
+    #star_par{width: 100%}
+    #star{
+        margin:0 auto;
+            width: 60%;
+    }
+    #star img{
+        width: 9%;
+    margin: 10px 12PX 0 12px;
+    }
+    .mx__title {
+    margin-top: -0.23em;
+    margin-bottom: .3em;
+   padding-left: 40%;
+    padding-right: 15px;
+    color: #999999;
+    font-size: 14px;
+}  
+    .weui-navbar__item.weui-bar__item--on {
+    color: #666;
+    border-bottom: 2px solid #f4a400;
+    background-color: #fff;
+    }
+
+        </style>
+</head>
+<body ontouchstart>
+    <div id="navbar" class="weui-cell">
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <p class="ys fl">当前就诊人</p><p class="fl">:</p>
+          <p class="fl">pgone</p><i id="agile" class="agile down_icon"><!-- <img src="images/down.png" alt=""> --></i>
+        </div>
+      </a>
+
+    </div>
+      <div id="people_list">
+        <div class="weui-cells weui-cells_radio">
+            <label class="weui-cell weui-check__label" for="x11">
+                <div class="weui-cell__bd">
+                    <p class="fl">周杰伦</p>
+                    <p class="fr">66666</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" name="radio1" id="x11">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="x12">
+
+                <div class="weui-cell__bd">
+                    <p class="fl">周杰伦</p>
+                    <p class="fr">777</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+        </div>
+      </div>
+    <!-- 选项卡 -->
+    <div class="weui-tab">
+      <div class="weui-navbar">
+        <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+          医院评价
+        </a>
+        <a class="weui-navbar__item" href="#tab2">
+          医生评价
+        </a>
+      </div>
+      <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <div id="star_par"><div id="star"></div></div>
+          <div class="mx__title">总体评价打分</div>
+          <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请填写您的意见和建议" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                </div>
+            </div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>就医环境</p>
+                    </div>
+                    <div class="weui-cell__ft"><div id="star1"></div></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>医生专业技术</p>
+                    </div>
+                    <div class="weui-cell__ft"><div id="star2"></div></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>医务人员态度</p>
+                    </div>
+                    <div class="weui-cell__ft"><div id="star3"></div></div>
+                </div>
+                <div class="weui-cell__bd">
+                </div>
+            </div>
+            <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">提交</a>
+        </div>
+        <div id="tab2" class="weui-tab__bd-item">
+          <div class="weui-loadmore weui-loadmore_line">
+              <span class="weui-loadmore__tips">暂未发现你的待评价记录</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-footer weui-footer_fixed-bottom footer">
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
+    <!-- 弹窗 -->
+    <div>
+        <div class="weui-mask" id="iosMask" style="display: none; "></div>
+    </div>
+
+    <div id="one_list" class="weui-cells" style="top: 3%;">
+        <div id="one_list_left" class="text-center">
+            <div class="retur"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script type="text/javascript" src="js/jquery.raty.min.js"></script>
+    <script>
+    // toast
+    $(function(){
+            $("#agile").stop().on("click", function(){
+            $("#agile").toggleClass("up_icon");
+            var istrue=$("#agile").hasClass("up_icon");
+            if(istrue == true){
+              $("#one_list").css("display","block");
+              $("#people_list .weui-cells").css("display","block");
+            }else{
+              $("#one_list").css("display","none");
+              $("#people_list .weui-cells").css("display","none");
+            }
+        });
+        var $toast = $('#toast');
+        $('#showToast').on('click', function(){
+            if ($toast.css('display') != 'none') return;
+
+            $toast.fadeIn(100);
+            setTimeout(function () {
+                $toast.fadeOut(100);
+            }, 2000);
+        });
+
+        // 评分
+        $('#star').raty({ score: 5 ,path: 'images',width:"60%"});
+        $('#star1').raty({ score: 0 ,path: 'images',width:"100%"});
+        $('#star2').raty({ score: 0 ,path: 'images',width:"100%"});
+        $('#star3').raty({ score: 0 ,path: 'images',width:"100%"});
+
+        $("#yes").click(function(){
+            $.toast("提交成功", "text");
+        });
+    });
+
+
+    // ios
+    // $(function(){
+    //     var $iosMask = $('#iosMask');
+
+    //     function hideActionSheet() {
+    //         $("#one_list").css("display","none");
+    //         $("#agile").removeClass("up_icon");
+    //         $("#people_list .weui-cells").css("display","none");
+    //     }
+
+    //     $("#agile").stop().on("click", function(){
+    //         $("#agile").toggleClass("up_icon");
+    //         var istrue=$("#agile").hasClass("up_icon");
+    //         if(istrue == true){
+    //           $("#one_list").css("display","block");
+    //           $("#people_list .weui-cells").css("display","block");
+    //         }else{
+    //           $("#one_list").css("display","none");
+    //           $("#people_list .weui-cells").css("display","none");
+    //         }
+    //     });
+    // });
+
+    // $(function(){
+    //     var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+    //         $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+    //         $uploaderInput = $("#uploaderInput"),
+    //         $uploaderFiles = $("#uploaderFiles")
+    //         ;
+
+    //     $uploaderInput.on("change", function(e){
+    //         var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+    //         for (var i = 0, len = files.length; i < len; ++i) {
+    //             var file = files[i];
+
+    //             if (url) {
+    //                 src = url.createObjectURL(file);
+    //             } else {
+    //                 src = e.target.result;
+    //             }
+
+    //             $uploaderFiles.append($(tmpl.replace('#url#', src)));
+    //         }
+    //     });
+    //     $uploaderFiles.on("click", "li", function(){
+    //         $galleryImg.attr("style", this.getAttribute("style"));
+    //         $gallery.fadeIn(100);
+    //     });
+    //     $gallery.on("click", function(){
+    //         $gallery.fadeOut(100);
+    //     });
+
+    // });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>新增用户</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/custom.css" rel="stylesheet"></link>
+    <style>
+    .wxts{
+    color:#ff8100;
+    float: left;
+    }
+    .weui-cell__ft {
+    text-align: right;
+    color: #ff8100;
+    border: 1px solid #ff8100;
+    border-radius: 20px;
+    font-size: 0.6em;
+    padding: 4px;
+    }
+    .weui-label {
+    display: block;
+    width: 50px;
+    word-wrap: break-word;
+    word-break: break-all;
+    }
+    #yes {
+    background: #f4a400;
+    border-radius: 50px;
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    }
+
+
+    </style>
+</head>
+<body ontouchstart>
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label"><img src="images/user-add.png" alt=""></label></div>
+                <div class="weui-cell__bd">
+                  <input class="weui-input" type="number" placeholder="请输入就诊人姓名">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label"><img src="images/sfz.png" alt=""></label></div>
+                <div class="weui-cell__bd">
+                  <input class="weui-input" type="number" placeholder="请输入身份证号">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label"><img src="images/Phone-tool.png" alt=""></label></div>
+                <div class="weui-cell__bd">
+                  <input class="weui-input" type="number" placeholder="请输入您的手机号">
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__title"><p class="wxts">温馨提示 :&nbsp;</p> 绑定的信息将作为就诊参考凭证。</div>
+        <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">确定</a>
+    </div>
+</body>
+</html>
