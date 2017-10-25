@@ -1,0 +1,59 @@
+@import "../../base/fn";
+.kdui-actionsheet {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translate(0, 100%);
+  backface-visibility: hidden;
+  z-index: 10001;
+  width: 100%;
+  background-color: @kduiBgColor; //slide up animation
+  transition: transform .3s;
+}
+
+.kdui-actionsheet__title{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: .2rem .3rem;
+  line-height: @kduiMutilLineHeight;
+  text-align: center;
+  font-size: .28rem;
+  color: @kduiFontSecondaryColor;
+  min-height: .9rem;
+  border-bottom: 1px solid @kduiLineColor;
+  background: #FFFFFF;
+}
+
+.kdui-actionsheet__menu {
+  background-color: #FFFFFF;
+  max-height: 6.7rem;
+  overflow: auto;
+  -webkit-overflow-scrolling : touch;
+}
+
+.kdui-actionsheet__action {
+  margin-top: .1rem;
+  background-color: #FFFFFF;
+}
+
+.kdui-actionsheet__cell {
+  position: relative;
+  padding: .2rem 0;
+  text-align: center;
+  height: .9rem;
+  line-height: .5rem;
+  font-size: @kduiFontHighLightSize;
+  border-top: 1px solid @kduiLineColor;
+  &:active {
+    background-color: @kduiWhiteActiveColor;
+  }
+  &:first-child{
+    border-top: none;
+  }
+}
+
+.kdui-actionsheet_toggle{
+    transform: translate(0, 0);
+}

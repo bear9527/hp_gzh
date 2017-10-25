@@ -6,7 +6,29 @@
     <title>预约挂号选择医生</title>
     <!-- 引入 WeUI -->
     <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet"></link>
     <link href="css/department.css" rel="stylesheet"></link>
+    <style>.close-select {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #f4a400!important;
+    z-index: 1;
+    padding: 0 .5rem;
+    }
+    .weui-dialog__btn {
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    color: #ffa705;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+}
+</style>
 </head>
 <body ontouchstart>
     <div id="navbar" class="weui-cell">
@@ -17,7 +39,53 @@
             <div class="weui-panel__bd">
             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
               <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
+              </div>
+              <div class="weui-media-box__bd">
+                <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
+                <p class="weui-media-box__desc">南方医院</p>
+                <p class="weui-media-box__desc fl">线上接诊：</p>
+                <p class="weui-media-box__desc">999</p>
+              </div>
+            </a>
+          </div>
+          <div class="weui-panel__hd"></div>
+          <div class="weui-panel__hd adept">描述。。。</div>
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">上午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">下午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">晚上班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+            </div>
+          <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+              <div class="weui-cell__bd">查看更多</div>
+              <span class="weui-cell__ft"></span>
+            </a>    
+          </div>
+        </div>
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
               </div>
               <div class="weui-media-box__bd">
                 <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
@@ -63,7 +131,7 @@
             <div class="weui-panel__bd">
             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
               <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
               </div>
               <div class="weui-media-box__bd">
                 <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
@@ -109,7 +177,7 @@
             <div class="weui-panel__bd">
             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
               <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
               </div>
               <div class="weui-media-box__bd">
                 <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
@@ -155,53 +223,7 @@
             <div class="weui-panel__bd">
             <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
               <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==">
-              </div>
-              <div class="weui-media-box__bd">
-                <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
-                <p class="weui-media-box__desc">南方医院</p>
-                <p class="weui-media-box__desc fl">线上接诊：</p>
-                <p class="weui-media-box__desc">999</p>
-              </div>
-            </a>
-          </div>
-          <div class="weui-panel__hd"></div>
-          <div class="weui-panel__hd adept">图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表图文组合列表</div>
-            <div class="weui-cells">
-                <a class="weui-cell weui-cell_access conf" href="javascript:;">
-                    <div class="weui-cell__bd">
-                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">上午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
-                    </div>
-                    <div class="weui-cell__ft">
-                    </div>
-                </a>
-                <a class="weui-cell weui-cell_access conf" href="javascript:;">
-                    <div class="weui-cell__bd">
-                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">下午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
-                    </div>
-                    <div class="weui-cell__ft">
-                    </div>
-                </a>
-                <a class="weui-cell weui-cell_access conf" href="javascript:;">
-                    <div class="weui-cell__bd">
-                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">晚上班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
-                    </div>
-                    <div class="weui-cell__ft">
-                    </div>
-                </a>
-            </div>
-          <div class="weui-panel__ft">
-            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-              <div class="weui-cell__bd">查看更多</div>
-              <span class="weui-cell__ft"></span>
-            </a>    
-          </div>
-        </div>
-        <div class="weui-panel weui-panel_access">
-            <div class="weui-panel__bd">
-            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-              <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==">
+                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
               </div>
               <div class="weui-media-box__bd">
                 <span class="ys fl">周杰伦</span><p class="weui-media-box__desc">主任医师</p>
@@ -251,135 +273,53 @@
         </div>
         <div id="one_list_right">
           <div class="text-center bottom_title">
-            <p>陈庆瑜</p><p>(</p><p>主治医师</p><p>)</p>
+            <p id="btm_name">陈庆瑜</p><p>(</p><p id="btm_zc">主治医师</p><p>)</p>
           </div>
           <div id="btm_slide">
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>踝部肿胀</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>膝关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
-            <a class="weui-cell weui-cell_access conf" href="javascript:;">
-              <div class="weui-cell__bd">
-                <p>髋关节疼痛</p>
-              </div>
-              <div class="weui-cell__ft">
-              </div>
-            </a>
+            <div id="btm_slide_target" class="weui-cells">
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">上午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">下午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">晚上班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">上午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">下午班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access conf" href="javascript:;">
+                    <div class="weui-cell__bd">
+                        <p class="fl">2017-09-26</p><p class="fl">(</p><p class="fl">星期二</p><p class="fl">)</p><p class="fl">晚上班</p><p class="fl">(</p><p class="fl">有号</p><p>)</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+            </div>
           </div>
           <div class="text-center bottom_footer">
             <p>取消</p>
@@ -387,53 +327,19 @@
         </div>
     </div>
     <div class="weui-footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/department.js"></script>
     <script>
         $(function(){
-            $("#target").on("click",".adept",function(){
-                if($(this).css("height") == "30px"){
-                    $(this).css("height","auto");
-                }else {
-                    $(this).css("height","30px");
-                }
-            });
-            $("#target").on("click",".conf",function(){
-                //如果参数过多，建议通过 object 方式传入
-                $.confirm({
-                  title: '挂号须知',
-                  text: '1.本次所付费用为专家诊疗费，不包含药物、检查、手术等其它费用<br/>2.优先安排预约时间，实际就诊时间与地点以双方沟通的最终订单为准',
-                  onOK: function () {
-                    //点击确认
-                  },
-                  onCancel: function () {
-                    $(".weui-mask").remove();
-                    $(".weui-dialog").remove();
-                  }
-                });
-            });
-            $("#btm_slide").on("click",".conf",function(){
-              $("#one_list").animate({top:'100%'});
-                //如果参数过多，建议通过 object 方式传入
-                $.confirm({
-                  title: '挂号须知',
-                  text: '1.本次所付费用为专家诊疗费，不包含药物、检查、手术等其它费用<br/>2.优先安排预约时间，实际就诊时间与地点以双方沟通的最终订单为准',
-                  onOK: function () {
-                    //点击确认
-                  },
-                  onCancel: function () {
-                    $(".weui-mask").remove();
-                    $(".weui-dialog").remove();
-                  }
-                });
-            });
+            
             
             //下边栏
             // $("#one_list").animate({top:'100%'});
             $("#target").on("click",".weui-cell_link",function(){
-                $("#one_list").animate({top:'-4%'});
+                $("#one_list").animate({top:'-2%'});
             });                
             $("#one_list_left").on("click",function(){
                 $("#one_list").animate({top:'100%'});

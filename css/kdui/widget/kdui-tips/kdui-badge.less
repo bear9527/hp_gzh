@@ -1,0 +1,29 @@
+@import "../../base/fn";
+.kdui-badge {
+  position: relative;
+  display: inline-block;
+  padding: 0 .1rem;
+  min-width:.16rem;
+  height: .32rem;
+  line-height: .32rem;
+  background-color: @kduiWarnColor;
+  color: #fff;
+  border-radius: .16rem;
+  font-size: @kduiFontSecondarySize;
+  &.kdui-badge_dot{
+    padding: 0;
+    width: .16rem;
+    height: .16rem;
+    border-radius: .08rem;
+  }
+  &.kdui-badge__list_rt {
+    position: absolute;
+    right: -.16rem;
+    top: -.32rem;
+  }
+  &.kdui-badge_rt {
+    position: absolute;
+    margin-top: .08rem;
+    margin-left: .08rem;
+  }
+}

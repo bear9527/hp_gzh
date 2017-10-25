@@ -1,13 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>健康档案</title>
-    <!-- 引入 WeUI -->
-    <link href="css/weui.css" rel="stylesheet"></link>
-    <link href="css/jquery-weui.css" rel="stylesheet"></link>
-    <style>
+    <head>
+        <meta charset="utf-8">
+            <meta content="width=device-width,initial-scale=1,user-scalable=0" name="viewport">
+                <title>
+                    健康档案
+                </title>
+                <!-- 引入 WeUI -->
+                <link href="css/weui.css" rel="stylesheet"/>
+                <link href="css/jquery-weui.css" rel="stylesheet"/>
+                <style>
+                    * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     body{
       font-size: 13px;
     }
@@ -33,6 +40,13 @@
       background-color: #ffa500;
     }
     #yes{
+      background: #f4a400;
+      border-radius: 50px;
+      width: 80%;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    #yes_doc{
       background: #f4a400;
       border-radius: 50px;
       width: 80%;
@@ -205,6 +219,15 @@
         width: 9%;
     margin: 10px 12PX 0 12px;
     }
+    #star_par2{width: 100%}
+    #star_doc{
+        margin:0 auto;
+            width: 60%;
+    }
+    #star_doc img{
+        width: 9%;
+    margin: 10px 12PX 0 12px;
+    }
     .mx__title {
     margin-top: -0.23em;
     margin-bottom: .3em;
@@ -218,115 +241,269 @@
     border-bottom: 2px solid #f4a400;
     background-color: #fff;
     }
-
-        </style>
-</head>
-<body ontouchstart>
-    <div id="navbar" class="weui-cell">
-      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-        <div class="weui-media-box__bd">
-          <p class="ys fl">当前就诊人</p><p class="fl">:</p>
-          <p class="fl">pgone</p><i id="agile" class="agile down_icon"><!-- <img src="images/down.png" alt=""> --></i>
+        .this_active .weui-icon-checked:before{
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+        .weui-cells_radio .weui-check:checked + .weui-icon-checked:before {
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+    .picker-calendar-day.picker-calendar-day-selected span {
+    background: #ffa500;
+    color: #fff;
+    }
+    #txt{color:#999999;}
+    #txt_doc{color:#999999;}
+@media screen and (max-width: 375px) {
+    #star {
+        margin: 0 auto;
+        width: 69%;
+    }
+}
+                </style>
+            </meta>
+        </meta>
+    </head>
+    <body ontouchstart="">
+        <div class="weui-cell" id="navbar">
+            <a class="weui-media-box weui-media-box_appmsg" href="javascript:void(0);">
+                <div class="weui-media-box__bd">
+                    <p class="ys fl">
+                        当前就诊人
+                    </p>
+                    <p class="fl">
+                        :
+                    </p>
+                    <p class="fl" id="jzr">
+                        pgone
+                    </p>
+                    <i class="agile down_icon" id="agile">
+                        <!-- <img src="images/down.png" alt=""> -->
+                    </i>
+                </div>
+            </a>
         </div>
-      </a>
-
-    </div>
-      <div id="people_list">
-        <div class="weui-cells weui-cells_radio">
-            <label class="weui-cell weui-check__label" for="x11">
-                <div class="weui-cell__bd">
-                    <p class="fl">周杰伦</p>
-                    <p class="fr">66666</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" id="x11">
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
-            <label class="weui-cell weui-check__label" for="x12">
-
-                <div class="weui-cell__bd">
-                    <p class="fl">周杰伦</p>
-                    <p class="fr">777</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
-        </div>
-      </div>
-    <!-- 选项卡 -->
-    <div class="weui-tab">
-      <div class="weui-navbar">
-        <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
-          医院评价
-        </a>
-        <a class="weui-navbar__item" href="#tab2">
-          医生评价
-        </a>
-      </div>
-      <div class="weui-tab__bd">
-        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
-            <div id="star_par"><div id="star"></div></div>
-          <div class="mx__title">总体评价打分</div>
-          <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请填写您的意见和建议" rows="3"></textarea>
-                    <div class="weui-textarea-counter"><span>0</span>/200</div>
-                </div>
+        <div id="people_list">
+            <div class="weui-cells weui-cells_radio" id="user_list">
+                <label class="weui-cell weui-check__label" for="x11">
+                    <div class="weui-cell__bd">
+                        <p class="fl">
+                            周杰伦
+                        </p>
+                        <p class="fr">
+                            66666
+                        </p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" id="x11" name="radio1" type="radio">
+                            <span class="weui-icon-checked">
+                            </span>
+                        </input>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x12">
+                    <div class="weui-cell__bd">
+                        <p class="fl">
+                            周杰伦
+                        </p>
+                        <p class="fr">
+                            777
+                        </p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input checked="checked" class="weui-check" id="x12" name="radio1" type="radio">
+                            <span class="weui-icon-checked">
+                            </span>
+                        </input>
+                    </div>
+                </label>
             </div>
-            <div class="weui-cells">
-                <div class="weui-cell">
+        </div>
+        <!-- 选项卡 -->
+        <div class="weui-tab">
+            <div class="weui-navbar">
+                <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                    医院评价
+                </a>
+                <a class="weui-navbar__item" href="#tab2" id="yspj">
+                    医生评价
+                </a>
+            </div>
+            <div class="weui-tab__bd">
+                <div class="weui-tab__bd-item weui-tab__bd-item--active" id="tab1">
+                    <div id="star_par">
+                        <div id="star">
+                        </div>
+                    </div>
+                    <div class="mx__title">
+                        总体评价打分
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <textarea class="weui-textarea" id="txt" placeholder="请填写您的意见和建议" rows="3">
+                            </textarea>
+                            <div class="weui-textarea-counter">
+                                <span id="word">
+                                    0
+                                </span>
+                                /200
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>
+                                    就医环境
+                                </p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <div id="star1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>
+                                    医生专业技术
+                                </p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <div id="star2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>
+                                    医务人员态度
+                                </p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <div id="star3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-cell__bd">
+                        </div>
+                    </div>
+                    <a class="weui-btn weui-btn_primary" href="javascript:;" id="yes">
+                        提交
+                    </a>
+                </div>
+                <div class="weui-tab__bd-item" id="tab2">
+                    <div class="weui-loadmore weui-loadmore_line" id="doc_pl_not">
+                        <span class="weui-loadmore__tips">
+                            暂未发现你的待评价记录
+                        </span>
+                    </div>
+                    <div class="weui-cell" id="doc_pl">
+                        <div id="mask">
+                        </div>
+                        <a class="weui-media-box weui-media-box_appmsg" href="javascript:void(0);">
+                            <div class="weui-media-box__hd">
+                                <img class="weui-media-box__thumb head_img" id="head_img" src="images/demo.jpg">
+                                </img>
+                            </div>
+                            <div class="weui-media-box__bd">
+                                <p class="ys" data-id="" id="docname">
+                                    周杰伦
+                                </p>
+                                <p class="weui-media-box__desc fl" id="zc">
+                                    主任医师
+                                </p>
+                                <p class="weui-media-box__desc fl">
+                                    |
+                                </p>
+                                <p class="weui-media-box__desc ks" id="ks">
+                                    骨科
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- <div id="star_par2"><div id="star_doc"></div></div>
+          <div class="mx__title">总体评价打分</div> -->
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <textarea class="weui-textarea" id="txt_doc" placeholder="请填写您的意见和建议" rows="3">
+                            </textarea>
+                            <div class="weui-textarea-counter">
+                                <span id="word_doc">
+                                    0
+                                </span>
+                                /200
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-cells">
+                        <!-- <div class="weui-cell">
                     <div class="weui-cell__bd">
                         <p>就医环境</p>
                     </div>
-                    <div class="weui-cell__ft"><div id="star1"></div></div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__bd">
-                        <p>医生专业技术</p>
+                    <div class="weui-cell__ft"><div id="star_doc1"></div></div>
+                </div> -->
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>
+                                    医生专业技术
+                                </p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <div id="star_doc2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>
+                                    医生态度
+                                </p>
+                            </div>
+                            <div class="weui-cell__ft">
+                                <div id="star_doc3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weui-cell__bd">
+                        </div>
                     </div>
-                    <div class="weui-cell__ft"><div id="star2"></div></div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__bd">
-                        <p>医务人员态度</p>
-                    </div>
-                    <div class="weui-cell__ft"><div id="star3"></div></div>
-                </div>
-                <div class="weui-cell__bd">
+                    <a class="weui-btn weui-btn_primary" href="javascript:;" id="yes_doc">
+                        提交
+                    </a>
                 </div>
             </div>
-            <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">提交</a>
         </div>
-        <div id="tab2" class="weui-tab__bd-item">
-          <div class="weui-loadmore weui-loadmore_line">
-              <span class="weui-loadmore__tips">暂未发现你的待评价记录</span>
+        <div class="weui-footer weui-footer_fixed-bottom footer">
+            <p class="weui-footer__text">
+                Copyright © 2016-2017 禾普医疗
+            </p>
+        </div>
+        <!-- 弹窗 -->
+        <div>
+            <div class="weui-mask" id="iosMask" style="display: none; ">
             </div>
         </div>
-      </div>
-    </div>
-
-    <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
-    </div>
-    <!-- 弹窗 -->
-    <div>
-        <div class="weui-mask" id="iosMask" style="display: none; "></div>
-    </div>
-
-    <div id="one_list" class="weui-cells" style="top: 3%;">
-        <div id="one_list_left" class="text-center">
-            <div class="retur"></div>
+        <div class="weui-cells" id="one_list" style="top: 3%;">
+            <div class="text-center" id="one_list_left">
+                <div class="retur">
+                </div>
+            </div>
         </div>
-    </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-weui.js"></script>
-    <script type="text/javascript" src="js/jquery.raty.min.js"></script>
-    <script>
-    // toast
+        <script src="js/jquery.min.js">
+        </script>
+        <script src="js/jquery-weui.js">
+        </script>
+        <script src="js/jquery.raty.min.js" type="text/javascript">
+        </script>
+        <script src="js/evaluate.js">
+        </script>
+        <script>
+            // toast
     $(function(){
             $("#agile").stop().on("click", function(){
             $("#agile").toggleClass("up_icon");
@@ -349,15 +526,22 @@
             }, 2000);
         });
 
-        // 评分
-        $('#star').raty({ score: 5 ,path: 'images',width:"60%"});
+        // 医院评分
+        $('#star').raty({ score: 5 ,path: 'images',width:"69%"});
         $('#star1').raty({ score: 0 ,path: 'images',width:"100%"});
         $('#star2').raty({ score: 0 ,path: 'images',width:"100%"});
         $('#star3').raty({ score: 0 ,path: 'images',width:"100%"});
-
-        $("#yes").click(function(){
-            $.toast("提交成功", "text");
-        });
+        // 医生评分
+        $('#star_doc').raty({ score: 5 ,path: 'images',width:"60%"});
+        $('#star_doc1').raty({ score: 0 ,path: 'images',width:"100%"});
+        $('#star_doc2').raty({ score: 0 ,path: 'images',width:"100%"});
+        $('#star_doc3').raty({ score: 0 ,path: 'images',width:"100%"});
+        // $("#yes").click(function(){
+        //     $.toast("提交成功", "text");
+        // });
+        // $("#yes_docc").click(function(){
+        //     $.toast("提交成功", "text");
+        // });
     });
 
 
@@ -414,6 +598,6 @@
     //     });
 
     // });
-    </script>
-</body>
+        </script>
+    </body>
 </html>

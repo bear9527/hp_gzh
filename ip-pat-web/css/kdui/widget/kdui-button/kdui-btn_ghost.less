@@ -1,0 +1,19 @@
+@import "../../base/fn";
+
+.kdui-btn__ghost {
+  border: @kduiBtnBorderSize solid @kduiGhostBtnDefaultBorderColor;
+  color: @kduiGhostBtnDefaultFontColor;
+  &:not(.kdui-btn_disabled):active {
+    background-color: @kduiGhostBtnActiveColor;
+    color: @kduiGhostBtnActiveFontColor;
+  }
+}
+
+.kdui-btn__ghost-second{
+  border: @kduiBtnBorderSize solid @kduiGhostSecondBtnDefaultBorderColor;
+  color: @kduiGhostSecondBtnDefaultFontColor;
+  &:not(.kdui-btn_disabled):active {
+    background-color: @kduiGhostSecondBtnActiveColor;
+    color: @kduiGhostSecondBtnActiveFontColor;
+  }
+}

@@ -6,7 +6,13 @@
     <title>所有病例资料</title>
     <!-- 引入 WeUI -->
     <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet"></link>
     <style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     body{
         background: #efefef;
     }
@@ -35,44 +41,104 @@
 </head>
 <body ontouchstart>
     <div class="frist_row">
-        <div><p class="name">周杰伦</p><p>,您好，目前您已经上传<span id="len">3</span>份病例资料</p>
+        <div><p id="userName" class="name">周杰伦</p><p>,您好，目前您已经上传<span id="len">3</span>份病例资料</p>
         <p>上传更多资料便于医生更准确的判断您的病情为您提供有针对性的治疗方案。</p></div>
     </div>
-    <div class="weui-cell__bd">
-        <div class="weui-uploader">
-                              <!-- <div class="weui-uploader__hd">
-                                  <p class="weui-uploader__title">图片上传</p>
-                                  <div class="weui-uploader__info">0/2</div>
-                              </div> -->
-            <div class="weui-uploader__bd">
-                <ul class="weui-uploader__files" id="uploaderFiles">
-                                      <!-- <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
-                                          <div class="weui-uploader__file-content">
-                                              <i class="weui-icon-warn"></i>
-                                          </div>
-                                      </li> -->
-                </ul>
-                <div class="weui-uploader__input-box">
-                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
-               </div>
-              <!-- <div id="text_up"><p>请上传检验检查报告</p></div> -->
-          </div>
+    <form id="jvForm" action="" method="post" enctype="multipart/form-data">  
+        <div class="weui-cell__bd">
+            <div class="weui-uploader">
+                 <div class="weui-gallery" id="gallery">
+                      <span class="weui-gallery__img" id="galleryImg"></span>
+                      <div class="weui-gallery__opr">
+                          <a href="javascript:" class="weui-gallery__del">
+                              <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                          </a>
+                      </div>
+                  </div>
+                <div class="weui-uploader__bd">
+                    <ul class="weui-uploader__files" id="uploaderFiles">
+                                          <!-- <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                                              <div class="weui-uploader__file-content">
+                                                  <i class="weui-icon-warn"></i>
+                                              </div>
+                                          </li> -->
+                    </ul>
+                    <div id="uploaderInput_par" class="weui-uploader__input-box">
+                        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                   </div>
+                  <!-- <div id="text_up"><p>请上传检验检查报告</p></div> -->
+              </div>
+            </div>
         </div>
-    </div>
+    </form>
     <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
+    <input type="text" id="img_str" style="display: none;">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/all-case.js"></script>
     <script>
-        $(function(){
-        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
-            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
-            $uploaderInput = $("#uploaderInput"),
-            $uploaderFiles = $("#uploaderFiles")
-            ;
+    //     $(function(){
+    //     var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+    //         $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+    //         $uploaderInput = $("#uploaderInput"),
+    //         $uploaderFiles = $("#uploaderFiles")
+    //         ;
 
-        $uploaderInput.on("change", function(e){
+    //     $uploaderInput.on("change", function(e){
+    //         var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+    //         for (var i = 0, len = files.length; i < len; ++i) {
+    //             var file = files[i];
+
+    //             if (url) {
+    //                 src = url.createObjectURL(file);
+    //             } else {
+    //                 src = e.target.result;
+    //             }
+
+    //             $uploaderFiles.append($(tmpl.replace('#url#', src)));
+    //         }
+    //     });
+    //     $uploaderFiles.on("click", "li", function(){
+    //         $galleryImg.attr("style", this.getAttribute("style"));
+    //         $gallery.fadeIn(100);
+    //     });
+    //     $gallery.on("click", function(){
+    //         $gallery.fadeOut(100);
+    //     });
+    //      //删除图片  删除图片的代码也贴出来。
+    //          $(".weui-gallery__del").click(function(){ 
+    //               var imgback = $(this).parent("div").prev().attr("style");
+    //               var imgback_array= imgback.split(')');
+    //               imgback_array= imgback_array[0].split('/');
+    //               $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_input").remove();
+    //               $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_li").remove();
+    
+    //               var img_str = $("#img_str").val().split(',');
+    //               var img_str_new = '';
+    //               for(var i=0;i<img_str.length;i++){
+    //                  if(img_str[i] != "'"+imgback_array[imgback_array.length-1]+"'"){
+    //                      if(img_str_new == ''){
+    //                          img_str_new = img_str[i];
+    //                      }else{
+    //                            img_str_new = img_str_new+","+img_str[i];
+    //                      }
+    //                  }
+    //               }
+    //               $("#img_str").val(img_str_new);
+    //          }); 
+
+    // });
+        $(function(){
+        var tmpl = '<li id="#imgname#_li" class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
+            // $uploaderInput = $("#uploaderInput"),
+            $uploaderInput = $("#uploaderInput_par"),
+            $uploaderFiles = $("#uploaderFiles");
+
+        $uploaderInput.on("change","#uploaderInput", function(e){
             var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
             for (var i = 0, len = files.length; i < len; ++i) {
                 var file = files[i];
@@ -83,9 +149,24 @@
                     src = e.target.result;
                 }
 
-                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+                // $uploaderFiles.append($(tmpl.replace('#url#', src)));
+                var src_split = src.split('/'); 
+                $uploaderFiles.append($(tmpl.replace('#url#', src).replace('#imgname#', src_split[src_split.length-1])));
+        //copy
+        //其中img_str 为我自己写的隐藏文本框，用来存放所有的图片名称组成的字符,类似"'名称1','名称2'，'名称3'"，因为我用这个隐藏框的值，来删除页面页面的指定图片。
+                    if($("#img_str").val() == '' || $("#img_str").val() == null){
+                       $("#img_str").val("'"+src_split[src_split.length-1]+"'");
+                    }else{
+                       $("#img_str").val($("#img_str").val()+",'"+src_split[src_split.length-1]+"'");
+                    }
+                    
+                    //开启隐藏上传 div
+                    $(this).after('<input id="uploaderInput"   name="result_file[]"  class="weui-uploader__input" type="file"   accept="image/*" multiple/>');
+                    $(this).hide();
+                    $(this).attr({id:""+src_split[src_split.length-1].replace(".","_")+"_input"}); 
             }
         });
+
         $uploaderFiles.on("click", "li", function(){
             $galleryImg.attr("style", this.getAttribute("style"));
             $gallery.fadeIn(100);
@@ -94,6 +175,28 @@
             $gallery.fadeOut(100);
         });
 
+        //删除图片  删除图片的代码也贴出来。
+             $(".weui-gallery__del").click(function(){ 
+                  var imgback = $(this).parent("div").prev().attr("style");
+                  var imgback_array= imgback.split(')');
+                  imgback_array= imgback_array[0].split('/');
+                  $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_input").remove();
+                  $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_li").remove();
+    
+                  var img_str = $("#img_str").val().split(',');
+                  var img_str_new = '';
+                  for(var i=0;i<img_str.length;i++){
+                     if(img_str[i] != "'"+imgback_array[imgback_array.length-1]+"'"){
+                         if(img_str_new == ''){
+                             img_str_new = img_str[i];
+                         }else{
+                               img_str_new = img_str_new+","+img_str[i];
+                         }
+                     }
+                  }
+                  $("#img_str").val(img_str_new);
+             }); 
+             
     });
     </script>
 </body>

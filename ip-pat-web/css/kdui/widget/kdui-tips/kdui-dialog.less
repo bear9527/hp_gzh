@@ -1,0 +1,66 @@
+@import "../../base/fn";
+.kdui-dialog {
+  position: fixed;
+  z-index: 20001;
+  width: 80%;
+  max-width: 6rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  text-align: center;
+  border-radius: .1rem;
+  overflow: hidden;
+}
+
+.kdui-dialog__hd {
+  padding: .4rem .3rem .2rem;
+}
+
+.kdui-dialog__title {
+  font-weight: 400;
+  font-size: @kduiFontTitleSize;
+}
+
+.kdui-dialog__bd {
+  padding: 0 .3rem .2rem;
+  min-height: .8rem;
+  max-height: 6rem;
+  font-size: @kduiFontPrimarySize;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
+  line-height: unit((.12 + @kduiCellFontSize) / @kduiCellFontSize);
+  overflow: auto;
+  -webkit-overflow-scrolling : touch;
+}
+
+.kdui-dialog__ft {
+  position: relative;
+  height: .9rem;
+  line-height: .9rem;
+  font-size: @kduiFontHighLightSize;
+  display: flex;
+  border-top: 1px solid @kduiLineColor;
+}
+
+.kdui-dialog__btn {
+  display: block;
+  width:50%;
+  color: @kduiFontPrimaryColor;
+  text-decoration: none;
+  .setTapColor();
+  &:active {
+    background-color: @kduiWhiteActiveColor;
+  }
+  position: relative;
+}
+
+.kdui-dialog__btn_default {
+  color: @kduiFontPrimaryColor;
+  border-right: 1px solid @kduiLineColor;
+}
+
+.kdui-dialog__btn_primary {
+  color: @kduiColorPrimary;
+}

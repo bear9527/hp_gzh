@@ -1,0 +1,40 @@
+@import "../../base/fn";
+.kdui-toast {
+  position: fixed;
+  z-index: 50000;
+  width: 2.4rem;
+  min-height: 2rem;
+  top: 3.6rem;
+  left: 50%;
+  margin-left: -1.2rem;
+  background: rgba(40, 40, 40, 0.75);
+  text-align: center;
+  border-radius: .1rem;
+  color: #FFFFFF;
+  padding: .2rem;
+  &.kdui-toast_mini {
+    width: 4.4rem;
+    min-height: .2rem;
+    margin-left: -2.4rem;
+    border-radius: .6rem;
+    &>.kdui-toast__content {
+      margin: 0;
+      line-height: unit((.12 + @kduiCellFontSize) / @kduiCellFontSize)
+    }
+  }
+}
+
+.kdui-icon_toast {
+  margin: .44rem 0 0;
+  display: block;
+  &.kdui-loading {
+    margin: .4rem 0 .1rem .6rem;
+    width: .8rem;
+    height: .8rem;
+    vertical-align: baseline;
+  }
+}
+
+.kdui-toast__content {
+  margin: 0 0 .3rem;
+}

@@ -1,0 +1,13 @@
+@import "../../base/fn";
+.kdui-btn_disabled {
+  pointer-events: none;
+  cursor: default;
+  &.kdui-btn__default {
+    background-color: @kduiBtnDisabledBgColor;
+    border-color: @kduiBtnDisabledBorderColor;
+  }
+  &.kdui-btn__ghost {
+    border-color: @kduiGhostBtnDisabledBorderColor;
+    color: @kduiGhostBtnDisabledFontColor;
+  }
+}

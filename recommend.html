@@ -8,6 +8,11 @@
     <link href="css/weui.css" rel="stylesheet"></link>
     <link href="css/custom.css" rel="stylesheet"></link>
     <style>
+     * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     .wxts{
     color:#ff8100;
     float: left;
@@ -18,7 +23,10 @@
     border: 1px solid #ff8100;
     border-radius: 20px;
     font-size: 0.6em;
-    padding: 4px;
+    padding: 2px;
+    }
+    #target a {
+    color: #ff6a00;
     }
 
 
@@ -36,7 +44,21 @@
                 </div>
             </div>
             <div class="weui-cells__title">推荐科室</div>
-            <div class="weui-cell">
+            <div id="target">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>骨科</p>
+                    </div>
+                    <div class="weui-cell__ft"><a href="">预约挂号</a></div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p>普外科</p>
+                    </div>
+                    <div class="weui-cell__ft"><a href="">预约挂号</a></div>
+                </div>
+            </div>
+            <!-- <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>骨科</p>
                 </div>
@@ -47,9 +69,12 @@
                     <p>普外科</p>
                 </div>
                 <div class="weui-cell__ft">预约挂号</div>
-            </div>
+            </div> -->
         </div>
         <div class="weui-cells__title"><p class="wxts">温馨提示 :&nbsp;</p> 以上推荐科室仅供参考</div>
     </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script src="js/recommend.js"></script>
 </body>
 </html>

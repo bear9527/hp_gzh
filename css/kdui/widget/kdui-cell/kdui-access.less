@@ -1,0 +1,29 @@
+@import "../../base/fn";
+.kdui-cell_access {
+  display: block;
+  .setTapColor();
+  color: inherit;
+  &:active {
+    background-color: @kduiCellActiveColor;
+  }
+  .kdui-cell {
+    border-top: 1px solid @kduiLineColor;
+  }
+  &:first-child {
+    .kdui-cell {
+      border-top: none;
+    }
+  }
+  .kdui-cell__ft {
+    padding-right: .26rem;
+    position: relative;
+    &:after {
+      content: " ";
+      .setArrow(right, .12rem, @kduiArrowColor, .02rem);
+      position: absolute;
+      top: 50%;
+      margin-top: -.08rem;
+      right: .04rem;
+    }
+  }
+}

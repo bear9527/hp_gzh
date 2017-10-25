@@ -11,6 +11,11 @@
     body{
       font-size: 13px;
     }
+     * {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    }
     .fl{
     float: left;
     margin-right: 4px;
@@ -49,10 +54,10 @@
       display: inline-block;
     }
     .down_icon{
-      background: url(../images/down.png)
+      background: url(./images/down.png)
     }
     .up_icon{
-      background: url(../images/up.png)
+      background: url(./images/up.png)
     }
     .weui-actionsheet {
     position: fixed;
@@ -147,7 +152,8 @@
     }
     .top_small label{
       height: 20px;
-    width: 100%;
+    width: 46%;
+    float: left;
     font-size: 10px;
     background: #ffe7cf;
     text-align: center;
@@ -176,6 +182,32 @@
     .weui-dialog__btn {
     color: #ffbe00;
     }
+    .this_active .weui-icon-checked:before{
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+    .toolbar .picker-button {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #ffa500;
+    z-index: 1;
+    padding: 0 .5rem;
+    }
+    .weui-cells_radio .weui-check:checked + .weui-icon-checked:before {
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+    .picker-calendar-day.picker-calendar-day-selected span {
+    background: #ffa500;
+    color: #fff;
+}
         </style>
 </head>
 <body ontouchstart>
@@ -189,7 +221,7 @@
 
     </div>
       <div id="people_list">
-        <div class="weui-cells weui-cells_radio">
+        <div id="user_list" class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="x11">
                 <div class="weui-cell__bd">
                     <p class="fl">周杰伦</p>
@@ -214,55 +246,55 @@
         </div>
       </div>
     <div id="form_body" class="weui-cells weui-cells_form">
-            <div class="weui-cell top_small">
-                <label class="weui-label">已暂存，最近一次暂存时间为：</label><label>2017-09-28 09:37:32</label>
+            <div class="weui-cell top_small" id="info_head">
+                <label class="weui-label" id="info_text">已暂存，最近一次暂存时间为：</label><label id="info_date">2017-09-28 09:37:32</label>
             </div>
             <div id="conf_id" class="weui-cell gray">
                 <div class="weui-cell__hd"><label class="weui-label">患 者 ID*</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
+                    <input id="this_id" class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
                 </div>
             </div>
             <div class="weui-cell gray">
                 <div class="weui-cell__hd"><label class="weui-label gray">姓名*</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" disabled="disabled">
+                    <input id="this_name" class="weui-input" type="text" disabled="disabled">
                 </div>
             </div>
             <div class="weui-cell gray">
                 <div class="weui-cell__hd"><label class="weui-label gray">身份证号*</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
+                    <input id="this_sfz" class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
                 </div>
             </div>
             <div class="weui-cell gray">
                 <div class="weui-cell__hd"><label class="weui-label gray">电话号码*</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
+                    <input id="this_phone" class="weui-input" type="number" pattern="[0-9]*" disabled="disabled">
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">家庭地址</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input" type="text" placeholder="家庭地址">
+                    <input id="user_home" class="weui-input" type="text" placeholder="家庭地址">
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">年龄</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="年龄">
+                    <input id="user_age" class="weui-input" type="number" pattern="[0-9]*" placeholder="年龄">
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">联系人</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input" type="text" placeholder="联系人">
+                    <input id="user_contacts" class="weui-input" type="text" placeholder="联系人">
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">联系人电话</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="联系人电话">
+                    <input id="user_contactnumber" class="weui-input" type="number" pattern="[0-9]*" placeholder="联系人电话">
                 </div>
             </div>
             <div class="weui-cell yellow">
@@ -292,19 +324,19 @@
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">身高</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="身高"><span class="">cm</span>
+                    <input id="user_height" class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="身高"><span class="">cm</span>
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">体重</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="体重"><span class="">kg</span>
+                    <input id="user_weight" class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="体重"><span class="">kg</span>
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">职业</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input" type="text" placeholder="职业">
+                    <input id="user_work" class="weui-input" type="text" placeholder="职业">
                 </div>
             </div>
             <div class="weui-cell yellow">
@@ -364,7 +396,7 @@
                                       <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
                                           <div class="weui-uploader__file-content">50%</div>
                                       </li> --></ul>
-                                  <div class="weui-uploader__input-box">
+                                  <div id="uploaderInput_par" class="weui-uploader__input-box">
                                       <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
                                   </div>
                                   <div id="text_up"><p>请上传检验检查报告</p></div>
@@ -373,12 +405,12 @@
                       </div>
               </div>
                   <div id="cells_title" class="weui-cells__title">温馨提示：个人健康档案</div>
-                  <a href="javascript:;" class="weui-btn weui-btn_default color_orange">暂存</a>
-                  <a id="submit" href="javascript:;" class="weui-btn weui-btn_default color_red">提交</a>
+                  <a id="temporary" name="submit" href="javascript:;" class="weui-btn weui-btn_default color_orange">暂存</a>
+                  <a id="submit" name="submit" href="javascript:;" class="weui-btn weui-btn_default color_red">提交</a>
           </div>
         </div>
     <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
     <!-- 弹窗 -->
     <div>
@@ -390,37 +422,12 @@
             <div class="retur"></div>
         </div>
     </div>
-
+    <input type="text" id="img_str" style="display: none;">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/archives.js"></script>
     <script>
-        $(function(){
-          $("#submit").click(function(){
-            var _this = $("#form_body>div");
-            var text = "",temp_label = "",temp_val = "";
-            for(var i=1;i<_this.length;i++){
-              temp_label = $(_this).eq(i).find("label").text();
-              temp_val = $(_this).eq(i).find("input").val();
-              text +=temp_label + " : " +temp_val +"<br>";
-            }
-            
-
-
-            
-            $.confirm({
-              title: '确认以下信息',
-              text: text,
-              onOK: function () {
-                //点击确认
-                $.toast("提交成功");
-              },
-              onCancel: function () {
-              }
-            });
-          });
-         
-
-        });
+        
 
 
     // toast
@@ -591,13 +598,13 @@
     });
 
     $(function(){
-        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
+        var tmpl = '<li id="#imgname#_li" class="weui-uploader__file" style="background-image:url(#url#)"></li>',
             $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
-            $uploaderInput = $("#uploaderInput"),
-            $uploaderFiles = $("#uploaderFiles")
-            ;
+            // $uploaderInput = $("#uploaderInput"),
+            $uploaderInput = $("#uploaderInput_par"),
+            $uploaderFiles = $("#uploaderFiles");
 
-        $uploaderInput.on("change", function(e){
+        $uploaderInput.on("change","#uploaderInput", function(e){
             var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
             for (var i = 0, len = files.length; i < len; ++i) {
                 var file = files[i];
@@ -608,9 +615,24 @@
                     src = e.target.result;
                 }
 
-                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+                // $uploaderFiles.append($(tmpl.replace('#url#', src)));
+                var src_split = src.split('/'); 
+                $uploaderFiles.append($(tmpl.replace('#url#', src).replace('#imgname#', src_split[src_split.length-1])));
+        //copy
+        //其中img_str 为我自己写的隐藏文本框，用来存放所有的图片名称组成的字符,类似"'名称1','名称2'，'名称3'"，因为我用这个隐藏框的值，来删除页面页面的指定图片。
+                    if($("#img_str").val() == '' || $("#img_str").val() == null){
+                       $("#img_str").val("'"+src_split[src_split.length-1]+"'");
+                    }else{
+                       $("#img_str").val($("#img_str").val()+",'"+src_split[src_split.length-1]+"'");
+                    }
+                    
+                    //开启隐藏上传 div
+                    $(this).after('<input id="uploaderInput"   name="result_file[]"  class="weui-uploader__input" type="file"   accept="image/*" multiple/>');
+                    $(this).hide();
+                    $(this).attr({id:""+src_split[src_split.length-1].replace(".","_")+"_input"}); 
             }
         });
+
         $uploaderFiles.on("click", "li", function(){
             $galleryImg.attr("style", this.getAttribute("style"));
             $gallery.fadeIn(100);
@@ -619,6 +641,28 @@
             $gallery.fadeOut(100);
         });
 
+        //删除图片  删除图片的代码也贴出来。
+             $(".weui-gallery__del").click(function(){ 
+                  var imgback = $(this).parent("div").prev().attr("style");
+                  var imgback_array= imgback.split(')');
+                  imgback_array= imgback_array[0].split('/');
+                  $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_input").remove();
+                  $("#"+imgback_array[imgback_array.length-1].replace(".","_")+"_li").remove();
+    
+                  var img_str = $("#img_str").val().split(',');
+                  var img_str_new = '';
+                  for(var i=0;i<img_str.length;i++){
+                     if(img_str[i] != "'"+imgback_array[imgback_array.length-1]+"'"){
+                         if(img_str_new == ''){
+                             img_str_new = img_str[i];
+                         }else{
+                               img_str_new = img_str_new+","+img_str[i];
+                         }
+                     }
+                  }
+                  $("#img_str").val(img_str_new);
+             }); 
+             
     });
     </script>
 </body>

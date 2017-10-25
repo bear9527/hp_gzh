@@ -1,7 +1,12 @@
 ﻿/*科室*/
 body,html{
-    background: #E5E5E5;
+    background: #f4f4f4;
 }
+     * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
 #navbar{
     background: #fff;
     position: fixed;
@@ -139,7 +144,7 @@ body,html{
 
 
 .bottom_footer p {
-    /* padding: 2px 15px 7px; */
+     padding: 5px 15px 7px; 
     color: #fff!important;
     font-size: 13px;
     height: 100%;
@@ -147,12 +152,36 @@ body,html{
 }
 
 #btm_slide{
-    height: 380px;
+   /* height: 380px;
     overflow: auto;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: scroll;*/
+    height: 340px;
+    overflow: auto;
 }
 #one_list_right{
     position: relative;
     height: 80%;
+}
+#target .weui-cell_link {
+    color: #000;
+    font-size: 14px;
+}
+.weui-cells {
+     margin-top: 0; 
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: relative;
+}
+.close-select {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #f4a400!important;
+    z-index: 1;
+    padding: 0 .5rem;
 }

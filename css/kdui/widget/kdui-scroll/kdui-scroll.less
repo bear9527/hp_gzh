@@ -1,0 +1,63 @@
+@import "../../base/fn";
+
+/*下拉通用的样式*/
+
+.kdui_wrapper {
+  position: absolute;
+  top: 0.01px;
+  bottom: 0.01px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  /* Prevent native touch events on Windows */
+  -ms-touch-action: none;
+  /* Prevent the callout on tap-hold and text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+.kdui_scroller {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.kdui_wrapper__top_sm {
+  top: .9rem;
+}
+
+.kdui_wrapper__top_lg {
+  top: 1.8rem;
+}
+
+.kdui_wrapper__bottom_sm {
+  bottom: .9rem;
+}
+
+.kdui_wrapper__bottom_lg {
+  bottom: 1.3rem;
+}
+
+// 处理弹出框滑动body也跟着滑动问题
+/*.noscroll body {
+    position: relative;
+}*/
+.noscroll, .noscroll body {
+    overflow: hidden;
+}

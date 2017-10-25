@@ -1,0 +1,97 @@
+@import "../../../base/fn";
+.kdui-switch {
+  appearance: none;
+}
+.kdui-switch {
+  position: relative;
+  width: .8rem;
+  height: @kduiSwitchHeight;
+  border: .02rem solid @kduiFontSupplementColor;
+  outline: 0;
+  border-radius: .32rem;
+  background-color: @kduiFontSupplementColor;
+  transition: background-color .1s, border .1s;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .8rem - .04;
+    height: @kduiSwitchHeight - .04;
+    border-radius: .3rem;
+    background-color: #FFFFFF;
+    transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    top: .06rem;
+    left: .06rem;
+    width: @kduiSwitchHeight - .16;
+    height: @kduiSwitchHeight - .16;
+    border-radius: .3rem;
+    background-color: @kduiFontSupplementColor;
+    transition: transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+  }
+}
+
+.kdui-switch:checked {
+  border-color: @kduiColorPrimary;
+  background-color: @kduiColorPrimary;
+  &:before {
+    transform: scale(0);
+  }
+  &:after {
+    transform: translateX(.4rem);
+    background-color: #FFFFFF;
+  }
+}
+
+.kdui-switch-tab {
+  appearance: none;
+}
+.kdui-switch-tab {
+  position: relative;
+  width: 1.6rem;
+  height: @kduiSwitchTabHeight;
+  outline: 0;
+  border: 0;
+  border-radius: @kduiSwitchTabHeight/2;
+  background-color: #e8e8e8;
+  font-size: .24rem;
+  text-align: center;
+  &:before {
+    content: "儿童";
+    position: absolute;
+    top: .04rem;
+    right: .04rem;
+    width: unit((1.6 - .04*3)/2, rem);
+    height: @kduiSwitchTabHeight - .08;
+    line-height: @kduiSwitchTabHeight - .08;
+    color: @kduiFontPrimaryColor;
+    border-radius: unit((@kduiSwitchTabHeight - .08)/2,rem);
+  }
+  &:after {
+    content: "成人";
+    position: absolute;
+    top: .04rem;
+    left: .04rem;
+    height: @kduiSwitchTabHeight - .08;
+    line-height: @kduiSwitchTabHeight - .08;
+    width: unit((1.6 - .04*3)/2, rem);
+    border-radius: unit((@kduiSwitchTabHeight - .08)/2,rem);
+    background-color: @kduiColorPrimary;
+    color: #fff;
+  }
+}
+
+.kdui-switch-tab:checked {
+  &:before {
+    background-color: @kduiColorPrimary;
+    color: #fff;
+  }
+  &:after {
+    background-color: #e8e8e8;
+    color: @kduiFontPrimaryColor;
+  }
+}

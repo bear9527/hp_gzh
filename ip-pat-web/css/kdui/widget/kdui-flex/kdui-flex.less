@@ -1,0 +1,21 @@
+@import "../../base/fn";
+.kdui-flex {
+  display: flex;
+  &.kdui-flex_column {
+    flex-direction: column;
+  }
+}
+
+.kdui-flex__item_center{
+  .kdui-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kdui-flex__item {
+  flex: 1 0 auto; // 兼容部分浏览器
+}
+
+.kdui-flex__item_none {
+  flex: none; // 兼容部分浏览器头尾需要加上flex的问题
+}

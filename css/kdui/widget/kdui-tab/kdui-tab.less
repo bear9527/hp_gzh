@@ -1,0 +1,26 @@
+@import "../../base/fn";
+.kdui-tab {
+  width: 100%;
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  font-size: @kduiFontPrimarySize;
+  height: .9rem;
+  border-bottom: 1px solid @kduiLineColor;
+  .kdui-tab__item {
+    color: @kduiFontPrimaryColor;
+    text-align: center;
+    width: 100%;
+    margin: 0 .3rem;
+    min-width: 1rem;
+    line-height: .9rem;
+    &.kdui-tab__item_current {
+      color: @kduiColorPrimary;
+      border-bottom: .06rem @kduiColorPrimary solid !important;
+    }
+  }
+  &:active {
+    opacity: .8;
+  }
+}

@@ -1,0 +1,49 @@
+@import "../../../base/fn";
+.kdui-check {
+  .kdui-cells_checkbox & {
+    &:checked {
+      &+.icon-check_normal {
+        &:before {
+          content: '\e60c';
+          color: @kduiColorPrimary;
+        }
+      }
+
+      // 只能点击列表右边的按钮实现
+      &+div>label>span.kdui-icon__arrow_top {
+        transform: matrix(-0.71, 0.71, -0.71, -0.71, 0, 0);
+        position: relative;
+        top: -.06rem;
+      }
+      &+div>label>span.kdui-icon__arrow_down {
+        transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+      }
+     /* &+div.arrow-default_top+div {
+        display: none;
+      }
+      &+div.arrow-default_down+div {
+        display: block !important;
+      }*/
+
+      // 点击整个列表实现
+      &+label>div>div>span.kdui-icon__arrow_top {
+        transform: matrix(-0.71, 0.71, -0.71, -0.71, 0, 0);
+        position: relative;
+        top: -.06rem;
+      }
+      &+label>div>div>span.kdui-icon__arrow_down {
+        transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+      }
+      /*&+label.arrow-default_top+div {
+        display: none;
+      }
+      &+label.arrow-default_down+div {
+        display: block !important;
+      }*/
+    }
+  }
+}
+
+.kdui-check__childs{
+  display: none;
+}

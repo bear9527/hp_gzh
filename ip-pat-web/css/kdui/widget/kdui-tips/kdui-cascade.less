@@ -1,0 +1,76 @@
+@import "../../base/fn";
+.kdui-cascade {
+  position: fixed;
+  height: 7.5rem;
+  left: 0;
+  bottom: 0;
+  transform: translate(0, 100%);
+  backface-visibility: hidden;
+  z-index: 10001;
+  width: 100%;
+  background-color: @kduiBgColor; //slide up animation
+  transition: transform .3s;
+}
+
+.kdui-cascade__title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: .2rem .3rem;
+  text-align: center;
+  font-size: .28rem;
+  color: @kduiFontSecondaryColor;
+  height: .9rem;
+  background: #FFFFFF;
+}
+
+.kdui-cascade__tab {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  font-size: @kduiFontPrimarySize;
+  height: .6rem;
+  border-bottom: 1px solid @kduiLineColor;
+  .kdui-tab__item {
+    color: @kduiFontPrimaryColor;
+    text-align: center;
+    margin: 0 .3rem;
+    height: .6rem;
+    line-height: .6rem;
+    &.kdui-tab__item_current {
+      color: @kduiColorPrimary;
+      border-bottom: .02rem @kduiColorPrimary solid !important;
+    }
+    &:active {
+      opacity: .8;
+    }
+  }
+}
+
+.kdui-cascade__content {
+  background-color: #FFFFFF;
+  overflow: auto;
+  -webkit-overflow-scrolling : touch;
+  height: 6rem;
+}
+
+.kdui-cascade__cell {
+  position: relative;
+  padding: .2rem .3rem;
+  height: .6rem;
+  width: auto;
+  line-height: .2rem;
+  font-size: @kduiFontPrimarySize;
+  &:active {
+    background-color: @kduiWhiteActiveColor;
+  }
+}
+
+.kdui-cascade_toggle {
+  transform: translate(0, 0);
+}
+
+/*#kdui_wrapper__cascade{
+  margin-top: 1.5rem;
+}*/

@@ -1,0 +1,30 @@
+@import "../../base/fn";
+.kdui-gradient__content {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  height: 2.56rem;
+  .kdui-gradient__content-title {
+    font-size: .9rem;
+    line-height: .75;
+  }
+  .kdui-gradient__content-desc {
+    font-size: .2rem;
+    margin-top: .26rem;
+  }
+}
+
+.kdui-gradient__bg {
+  background: linear-gradient(@grandientAngle, @grandientFromColor, @grandientTorColor);
+}
+.kdui-gradient__bg_red {
+  background: linear-gradient(@grandientAngle, #f06666, #fb8e75);
+}
+
+.kdui-gradient__bg_radius {
+  border-radius: .1rem;
+}
+

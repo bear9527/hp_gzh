@@ -6,21 +6,29 @@
     <title>我的预约</title>
     <!-- 引入 WeUI -->
     <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jQuery-weui.css" rel="stylesheet"></link>
     <style>
     body{
       background:#E5E5E5;
     }
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     .ys{margin-right:6px; }
     .we_desc{
       font-size: 13px;
+      width: 78%;
+    display: inline-block;
     }
     .grey{
       color:#666;
     }
     .block{
       display: inline-block;
-      width: 70%;
-
+      width: 62%;
+      
     }
     .head_img{
     -webkit-border-radius: 50em;
@@ -30,10 +38,18 @@
     .close_re{
       color:red;
       font-size: 16px;
+      width: 38%;
+      display: inline-block;
+      text-align: right;
+      color: red;
+      font-size: 16px;
     }
     .yes_re{
-      color:green;
+      color:#ff8d00;
       font-size: 16px;
+      width: 38%;
+      text-align: right;
+      display: inline-block;
     }
     #target p{
       color:#666;
@@ -55,23 +71,29 @@
     font-size: 13px;
     margin: 0 6px 9px 0;
   }
+  #target{
+    margin: 0 0 30px 0;
+  }
+
+
     </style>
+  
 </head>
 <body ontouchstart>
     <div id="target" >
         <div class="weui-panel weui-panel_access">
             <div class="weui-panel__bd">
-            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-              <div class="weui-media-box__hd">
-                <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
-              </div>
-              <div class="weui-media-box__bd">
-                <span class="ys fl">周杰伦</span><span class="we_desc">主任医师</span>
-                <span class="we_desc grey block">南方医院</span>
-                <span class="yes_re">待医生确认</span>
-              </div>
-            </a>
-          </div>
+              <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                  <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
+                </div>
+                <div class="weui-media-box__bd">
+                  <span class="ys fl">周杰伦</span><span class="we_desc">主任医师</span>
+                  <span class="we_desc grey block">南方医院</span>
+                  <span class="yes_re">待医生确认</span>
+                </div>
+              </a>
+            </div>
             <div class="weui-cells">
                 <a class="weui-cell weui-cell_access" href="javascript:;">
                   <div class="weui-cell__bd">
@@ -120,10 +142,11 @@
     </div>
    
     <div class="weui-footer weui-footer_fixed-bottom">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/my-reservation.js"></script>
     <script>
         $(function(){
             $("#target").on("click",".adept",function(){

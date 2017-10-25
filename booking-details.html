@@ -10,6 +10,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="css/style.css" rel="stylesheet" media="all">
     <style>
+     * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     body{
       margin:0;
       padding: 0;
@@ -96,6 +101,8 @@
     .ys{margin-right:6px; }
     .we_desc{
       font-size: 13px;
+      width: 75%;
+    display: inline-block;
     }
     .grey{
       color:#666;
@@ -140,7 +147,7 @@
   }
     .nav-justified>li {
     float: none;
-    width: 30%;
+    width: 32%;
     float: left;
 }
 
@@ -160,11 +167,29 @@
     padding: 11px 0 0 0;
     font-size: 12px;
 }
+#sta_info{margin:10px;}
+@media screen and (max-width: 375px) {
+    .step-round > li > a:before {
+        position: absolute;
+        z-index: 2;
+        top: -1.8rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: #ffffff;
+        line-height: 2rem;
+        box-shadow: 0 0 0 5px #ebebeb;
+    }
+}
+
     </style>
 </head>
 <body ontouchstart>
     <div class="jdt">
-      <ul class="nav nav-pills nav-justified step step-round" data-step="3">
+      <ul id="jd" class="nav nav-pills nav-justified step step-round" data-step="3">
         <li class="active">
           <a>提交申请</a>
         </li>
@@ -175,7 +200,7 @@
           <a>用户缴费</a>
         </li>
       </ul>
-      <p class="text-center">该预约待医生确认，请耐心等候</p>
+      <p id="sta_info" class="text-center">该预约待医生确认，请耐心等候</p>
     </div>
     <div id="navbar">
       <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
@@ -183,8 +208,8 @@
                 <img class="weui-media-box__thumb head_img" src="images/demo2.jpeg">
               </div>
               <div class="weui-media-box__bd">
-                <span class="ys fl">周杰伦</span><span class="we_desc">主任医师</span>
-                <span class="we_desc grey block">南方医院</span>
+                <span id="doc_name" class="ys fl">周杰伦</span><span id="doc_zc" class="we_desc">主任医师</span>
+                <span id="doc_ks" class="we_desc grey block">南方医院</span>
               </div>
             </a>
     </div>
@@ -195,37 +220,37 @@
                 <div class="weui-cell__bd">
                     <p>就诊人</p>
                 </div>
-                <div class="weui-cell__ft">周杰伦</div>
+                <div id="doc_jzr" class="weui-cell__ft">周杰伦</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>就诊时间</p>
                 </div>
-                <div class="weui-cell__ft">2017-09-28(星期四)下午班</div>
+                <div id="doc_date" class="weui-cell__ft">2017-09-28(星期四)下午班</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>就诊地点</p>
                 </div>
-                <div class="weui-cell__ft place">北京禾普医疗</div>
+                <div id="doc_target" class="weui-cell__ft place">北京禾普医疗</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>会诊费用</p>
                 </div>
-                <div class="weui-cell__ft">2000.0元</div>
+                <div id="money" class="weui-cell__ft">2000.0元</div><span style="color: #999999;">元</span>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>下单时间</p>
                 </div>
-                <div class="weui-cell__ft">2017-09-28 20:11:30</div>
+                <div id="submit_date" class="weui-cell__ft">2017-09-28 20:11:30</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>订单号</p>
                 </div>
-                <div class="weui-cell__ft">w003092017092800008</div>
+                <div id="doc_ddh" class="weui-cell__ft">w003092017092800008</div>
             </div>
         </div>
     </div>
@@ -233,17 +258,17 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入简要病情描述" rows="3"></textarea>
-                    <div class="weui-textarea-counter"><span>0</span>/100</div>
+                    <textarea id="txt" class="weui-textarea" placeholder="请输入简要病情描述" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span id="word">0</span>/100</div>
                 </div>
             </div>
-            <a class="weui-cell weui-cell_access" href="javascript:;">
+            <a id="jkda" class="weui-cell weui-cell_access" href="archives.html?id=xxxxx">
               <div class="weui-cell__bd">
                   <p>编辑健康档案</p>
               </div>
               <div class="weui-cell__ft"></div>
             </a>
-            <a class="weui-cell weui-cell_access" href="javascript:;">
+            <a id="scfj" class="weui-cell weui-cell_access" href="all-case-info.html?id=xx">
               <div class="weui-cell__bd">
                   <p>上传附件</p>
               </div>
@@ -255,10 +280,11 @@
 
     <!-- <div class="zwf"></div> -->
     <div class="weui-footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/booking.js"></script>
     <script>
         $(function(){
          

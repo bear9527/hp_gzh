@@ -8,6 +8,11 @@
     <link href="css/weui.css" rel="stylesheet"></link>
     <link href="css/jquery-weui.css" rel="stylesheet"></link>
     <style>
+     * {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    }
     .fl{
     float: left;
     margin-right: 4px;
@@ -74,6 +79,43 @@
       width: 150px;
       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
+    .this_active .weui-icon-checked:before{
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+    .weui-cells_radio .weui-check:checked + .weui-icon-checked:before {
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+    }
+    #txt{
+      color:#666;
+    }
+    .c-icon{
+      margin: 0 6px;
+    }
+    .c-icon:after {
+    content: " ";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 1px 1px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(1, 1, 1, -1, -2.29, 0);
+    transform: matrix(1, 1, 1, -1, -2.29, 0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+    margin-right: 8px;
+}
+
     </style>
 </head>
 <body ontouchstart>
@@ -81,12 +123,12 @@
       <div id="mask"></div>
       <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
         <div class="weui-media-box__hd">
-          <img class="weui-media-box__thumb head_img" src="images/demo.jpg">
+          <img class="weui-media-box__thumb head_img" id="head_img" src="images/demo.jpg">
         </div>
         <div class="weui-media-box__bd">
-          <p class="ys">周杰伦</p>
-          <p class="weui-media-box__desc fl">主任医师</p><p class="weui-media-box__desc fl">|</p>
-          <p class="weui-media-box__desc">骨科</p>
+          <p id="docname" class="ys">周杰伦</p>
+          <p id="zc" class="weui-media-box__desc fl">主任医师</p><p class="weui-media-box__desc fl">|</p>
+          <p class="weui-media-box__desc ks">骨科</p>
         </div>
       </a>
     </div>
@@ -95,9 +137,9 @@
         <div class="weui-cells">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <p>骨科</p>
+                    <p class="ks">骨科</p>
                 </div>
-                <div class="weui-cell__ft">2017-09-28(星期四)下午班</div>
+                <div id="date" class="weui-cell__ft">2017-09-28(星期四)下午班</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
@@ -105,11 +147,14 @@
                 </div>
                 <div class="weui-cell__ft"><span id="money">2000.0</span>元</div>
             </div>
-            <div class="weui-cell">
+            <div class="weui-cell" id="in">
                 <div class="weui-cell__bd">
                     <p>就诊人</p>
                 </div>
-                <div class="weui-cell__ft">周杰伦</div>
+                <!-- <div class="weui-cell__ft">周杰伦</div> -->
+                <input class="weui-cell__ft" id="jzr" type="text" value="pg one" readonly="" data-values="001" style="border: none;">
+                <i class="c-icon"></i>
+                <!-- e -->
             </div>
         </div>
     </div>
@@ -117,18 +162,18 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入简要病情描述" rows="3"></textarea>
-                    <div class="weui-textarea-counter"><span>0</span>/100</div>
+                    <textarea id="txt" class="weui-textarea" placeholder="请输入简要病情描述" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span id="word">0</span>/100</div>
                 </div>
             </div>
     </div>
-    <a class="weui-cell weui-cell_access" href="javascript:;">
+    <a id="jkda" class="weui-cell weui-cell_access" href="javascript:;">
       <div class="weui-cell__bd">
           <p>编辑健康档案</p>
       </div>
       <div class="weui-cell__ft"></div>
     </a>
-    <a class="weui-cell weui-cell_access" href="javascript:;">
+    <a id="scfj" class="weui-cell weui-cell_access" href="javascript:;">
       <div class="weui-cell__bd">
           <p>上传附件</p>
       </div>
@@ -138,11 +183,12 @@
       <div class="weui-cell__bd">
           <p>就诊地点</p>
       </div>
-      <div class="place" class="weui-cell__ft">北京朝阳区禾普诊所</div>
+      <div id="dz" class="place" class="weui-cell__ft">北京朝阳区禾普诊所</div>
     </a>
     <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">确定</a>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/make.js"></script>
     <script>
         $(function(){
          
@@ -161,7 +207,7 @@
             }
           });
           $("#weui-prompt-input").remove(); //去除原始输入框
-          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea><p><span class="color_orange">温馨提示：</span>预约医生到其他地方就诊，费用会高于当前费用，具体费用以后台工作人员与医生确认为准</p>');
+          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value="" style="resize:none;"></textarea><p><span class="color_orange">温馨提示：</span>预约医生到其他地方就诊，费用会高于当前费用，具体费用以后台工作人员与医生确认为准</p>');
           //重新拼接应textarea.
         });
         });

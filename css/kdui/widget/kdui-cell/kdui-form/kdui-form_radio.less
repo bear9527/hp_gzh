@@ -1,0 +1,14 @@
+@import "../../../base/fn";
+
+.kdui-check {
+    .kdui-cells_radio & {
+        &:checked {
+            & + .icon-radio_normal {
+                &:before {
+                    content: '\e609';
+                    color: @kduiColorPrimary;
+                }
+            }
+        }
+    }
+}

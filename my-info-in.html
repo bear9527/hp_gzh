@@ -8,6 +8,11 @@
     <link href="css/weui.css" rel="stylesheet"></link>
     <link href="css/jquery-weui.css" rel="stylesheet"></link>
     <style>
+    * {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    }
     .fl{
     float: left;
     margin-right: 4px;
@@ -33,10 +38,16 @@
     #navbar a.weui-media-box:active {
     background-color: #ffa500;
     }
-    #yes{
+/*    #yes{
       background: #fff;
       margin-top: 10px;
       color:red;
+    }*/
+    #yes {
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: red;
     }
     #money{
       color: #f4a400;
@@ -124,7 +135,7 @@
                 </div>
                 <div class="weui-cell__ft weui-media-box_appmsg">
                   <div class="weui-media-box__hd ">
-                    <img class="weui-media-box__thumb head_img" src="images/head.png">
+                    <img id="head_img" class="weui-media-box__thumb head_img" src="images/head.png">
                   </div>
                 </div>
             </div>
@@ -132,19 +143,19 @@
                 <div class="weui-cell__bd">
                     <p>姓名</p>
                 </div>
-                <div class="weui-cell__ft">周</div>
+                <div id="user_name" class="weui-cell__ft">周</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>性别</p>
                 </div>
-                <div class="weui-cell__ft">女</div>
+                <div id="sex" class="weui-cell__ft">女</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>手机号码</p>
                 </div>
-                <div class="weui-cell__ft">15566655555</div>
+                <div id="phone" class="weui-cell__ft">15566655555</div>
             </div>
             <div class="weui-cell__bd">
             </div>
@@ -155,41 +166,42 @@
                 <div class="weui-cell__bd">
                     <p>用户ID</p>
                 </div>
-                <div class="weui-cell__ft">133333</div>
+                <div id="user_id" class="weui-cell__ft">133333</div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__bd">
                     <p>身份证号码</p>
                 </div>
-                <div class="weui-cell__ft">13022222</div>
+                <div id="user_sfz" class="weui-cell__ft">13022222</div>
             </div>
-            <a class="tup weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
+            <a id="rwm" data-img="" class="tup weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
               <div class="weui-media-box__bd">
                 <span class="ys fl">二维码名片</span>
               </div>
               <div class="weui-cell__ft"><img src="images/barcode-2d.png" alt="">
               </div>
             </a>
-            <a class="tup weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
+            <a id="txm" data-img="" class="tup weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
               <div class="weui-media-box__bd">
                 <span class="ys fl">条形码名片</span>
               </div>
               <div class="weui-cell__ft"><img src="images/barcode6.png" alt="">
               </div>
             </a>
-            <a class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
+            <a id="jkda" class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
               <div class="weui-media-box__bd">
                 <span class="ys fl">健康档案</span>
               </div>
-              <div class="weui-cell__ft"><span>100%</span>
+              <div class="weui-cell__ft"><span id="bfb">100%</span>
               </div>
             </a>
             
         </div>
     </div>
+    <a href="javascript:;" id="m_default" class="weui-btn weui-btn_default">设为默认</a>
     <a href="javascript:;" id="yes" class="weui-btn weui-btn_default">解除绑定</a>
     <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
 
 
@@ -222,54 +234,14 @@
     
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
-    <!-- <script src="js/weui.min.js"></script> -->
+    <script src="js/myinfoin.js"></script>
     <script>  // android
-    $(function(){
-        var $androidActionSheet = $('#androidActionsheet');
-        var $androidMask = $androidActionSheet.find('.weui-mask');
-
-        $(".tup").on('click', function(){
-            $androidMask.addClass("weui-mask--visible")
-            $androidActionSheet.css("display","block");
-            $androidMask.on('click',function () {
-                $androidActionSheet.css("display","none");
-            });
-        });
-    });
         $(function(){
          
-          $("#yes").click(function(){
-              $.actions({
-                title:"确定要解绑当前就诊人吗？",
-                actions: [{
-                  text: "确定解绑",
-                  onClick: function() {
-                    //do something
-                  }
-                }]
-              });
-          });
 
 
 
-          $("#place").click(function(){
-          $.prompt({
-            title: '设定就诊地点',
-            // text: '内容文案',
-            textarea: '输入框默认值',
-            empty: false, // 是否允许为空
-            onOK: function (input) {
-              //点击确认
-              $(".place").html($("#weui-prompt-input").val());
-              $.closeModal();
-            },
-            onCancel: function () {$.closeModal();
-            }
-          });
-          $("#weui-prompt-input").remove(); //去除原始输入框
-          $(".weui-dialog__bd").append('<textarea  rows="8" type="height:110px;" class="weui_input weui-prompt-input" id="weui-prompt-input" value=""></textarea><p><span class="color_orange">温馨提示：</span>预约医生到其他地方就诊，费用会高于当前费用，具体费用以后台工作人员与医生确认为准</p>');
-          //重新拼接应textarea.
-        });
+
         });
 
 

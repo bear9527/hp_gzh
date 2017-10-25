@@ -1,0 +1,161 @@
+/*
+ * 通用上传样式
+ * @Author: strong
+ * @Date: 2017-05-13 21:02:42
+ * @Last Modified by: strong
+ * @Last Modified time: 2017-07-07 18:13:25
+ */
+
+@import "../../base/fn";
+.kdui-uploader__bd {
+  overflow: hidden;
+  display: block !important;
+  height: auto;
+  padding-bottom: 0;
+}
+
+.kdui-uploader__files {
+  list-style: none;
+}
+
+.kdui-uploader__file {
+  float: left;
+  margin-right: @kduiUploaderFileSpacing;
+  margin-bottom: @kduiUploaderFileSpacing;
+  margin-bottom: @kduiUploaderFileSpacing;
+  width: @kduiUploaderSize;
+  height: @kduiUploaderSize;
+  background: no-repeat center center;
+  background-size: cover;
+  &.kdui-uploader_small {
+    width: @kduiUploaderSmallSize;
+    height: @kduiUploaderSmallSize;
+  }
+}
+
+.kdui-uploader__file_status {
+  position: relative;
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+  }
+  .kdui-uploader__file-content {
+    display: block;
+  }
+}
+
+.kdui-uploader__file-content {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+}
+
+.kdui-uploader__input-box {
+  float: left;
+  position: relative;
+  margin-right: @kduiUploaderFileSpacing;
+  margin-bottom: @kduiUploaderFileSpacing;
+  width: @kduiUploaderSize - @kduiUploaderBorderWidth * 2;
+  height: @kduiUploaderSize - @kduiUploaderBorderWidth * 2;
+  border: @kduiUploaderBorderWidth solid @kduiUploaderBorderColor;
+  &:before,
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: @kduiUploaderBorderColor;
+  }
+  &:before {
+    width: @kduiUploaderBorderWidth + 1;
+    height: .04rem;
+  }
+  &:after {
+    width: .04rem;
+    height: @kduiUploaderBorderWidth + 1;
+  }
+  &:active {
+    border-color: @kduiUploaderActiveBorderColor;
+    &:before,
+    &:after {
+      background-color: @kduiUploaderActiveBorderColor;
+    }
+  }
+  &.kdui-uploader_small {
+    width: @kduiUploaderSmallSize - @kduiUploaderBorderWidth * 2;
+    height: @kduiUploaderSmallSize - @kduiUploaderBorderWidth * 2;
+    &:before {
+      height: .04rem;
+      width: @kduiUploaderBorderWidth + .5;
+    }
+    &:after {
+      width: .04rem;
+      height: @kduiUploaderBorderWidth + .5;
+    }
+  }
+}
+
+.kdui-uploader__input {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  .setTapColor();
+}
+
+.kdui-uploader__idcard {
+  padding: 0 .3rem;
+  margin: .2rem 0;
+  display: flex;
+  .kdui-uploader__idcard-item {
+    position: relative;
+    border: 1px solid @kduiLineColor;
+    border-radius: .1rem;
+    background: #FFFFFF;
+    height: 2.2rem;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &.kdui-uploader__idcard-item-front {
+      background-image: url(../../images/v5/my_info/pic_idCardFront.png);
+      background-size: 2.6rem;
+    }
+    &.kdui-uploader__idcard-item-back {
+      margin-left: .2rem;
+      background-image: url(../../images/v5/my_info/pic_idCardBack.png);
+      background-size: 2.6rem;
+    }
+    &.kdui-upload__idcard-item-img {
+      background-size: auto 2.2rem;
+    }
+    .kdui-uploader__idcard-item-text {
+      font-size: .32rem;
+      text-align: center;
+      line-height: 2.2rem;
+    }
+    .kdui-uploader__idcard-item-input{
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    &:active {
+      border-color: @kduiUploaderActiveBorderColor;
+    }
+  }
+}

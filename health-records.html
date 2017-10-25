@@ -8,8 +8,10 @@
     <link href="css/weui.css" rel="stylesheet"></link>
     <link href="css/jquery-weui.css" rel="stylesheet"></link>
     <style>
-    body{
-      font-size: 13px;
+     * {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
     }
     .fl{
     float: left;
@@ -176,6 +178,22 @@
     .weui-dialog__btn {
     color: #ffbe00;
     }
+    .toolbar .picker-button {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #ffa500;
+    z-index: 1;
+    padding: 0 .5rem;
+}
+.weui-cells_radio .weui-check:checked + .weui-icon-checked:before {
+    display: block;
+    content: '\EA08';
+    color: #ffa500;
+    font-size: 16px;
+}
         </style>
 </head>
 <body ontouchstart>
@@ -183,13 +201,13 @@
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">身高</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="身高"><span class="">cm</span>
+                    <input id="height" class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="身高"><span class="">cm</span>
                 </div>
             </div>
             <div class="weui-cell yellow">
                 <div class="weui-cell__hd"><label class="weui-label">体重</label></div>
                 <div class="weui-cell__bd drakgray">
-                    <input class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="体重"><span class="">kg</span>
+                    <input id="weight" class="weui-input r_text" type="number" pattern="[0-9]*" placeholder="体重"><span class="">kg</span>
                 </div>
             </div>
             <div class="weui-cell yellow">
@@ -258,11 +276,11 @@
                     <input class="weui-input" type="text" id="datetime-picker" placeholder="点击选择月经时间">
                 </div>
             </div>
-                  <a id="submit" href="javascript:;" class="weui-btn weui-btn_default">保存</a>
+                  <a id="yes" href="javascript:;" class="weui-btn weui-btn_default">保存</a>
           </div>
         </div>
     <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
     <!-- 弹窗 -->
     <div>
@@ -277,14 +295,16 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/health_records.js"></script>
+    
     <script>
-        $(function(){
-          $("#submit").click(function(){
-            $.toast("提交成功");
-          });
+        // $(function(){
+        //   $("#submit").click(function(){
+        //     $.toast("提交成功");
+        //   });
          
 
-        });
+        // });
 
 
     // toast

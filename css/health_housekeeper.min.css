@@ -125,7 +125,7 @@
 }
 
 .taocan_item input:checked+label {
-    background: #ff8431;
+    background: #ffa500;
     color: #fff
 }
 
@@ -135,12 +135,12 @@
 }
 
 .taocan_item .item_selected {
-    background: #ff8431;
+    background: #ffa500;
     color: #fff
 }
 
 .taocan_item .item_no_select {
-    border: 1px solid #ff8431
+    border: 1px solid #ffa500
 }
 
 .vipbuy {
@@ -191,20 +191,20 @@
 }
 
 .hhk_intro .bc-green {
-    background-color: #ff8431;
+    background-color: #ffa500;
     color: #fff
 }
 
 .hhk_intro .cgreen {
-    color: #ff8431!important
+    color: #ffa500!important
 }
 
 .hhk_intro .border-solid {
-    border: 1px solid #ff8431
+    border: 1px solid #ffa500
 }
 
 .hhk_intro .border-dot {
-    border: 1px dotted #ff8431
+    border: 1px dotted #ffa500
 }
 
 .hhk_intro .border-left0 {
@@ -218,8 +218,8 @@
 .hhk_intro .border-table {
     border-left: 0;
     border-top: 0;
-    border-right: #ff8431 dotted 1px;
-    border-bottom: #ff8431 dotted 1px
+    border-right: #ffa500 dotted 1px;
+    border-bottom: #ffa500 dotted 1px
 }
 
 .hhk_intro .intro {
@@ -251,7 +251,7 @@
 }
 
 .hhk_intro .greendot::first-letter {
-    color: #ff8431
+    color: #ffa500
 }
 
 .hhk_intro .kd-list p {
@@ -276,7 +276,7 @@
 }
 
 .hhk_intro-table .greenbox {
-    background-color: #ff8431;
+    background-color: #ffa500;
     color: #fff;
     max-width: 44px;
     min-width: 44px;

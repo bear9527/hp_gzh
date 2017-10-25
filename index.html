@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>所有病例资料</title>
+    <!-- 引入 WeUI -->
+    <link href="css/weui.css" rel="stylesheet"></link>
+    <link href="css/jquery-weui.css" rel="stylesheet">
+    <style>
+     * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+    body{
+        background: #efefef;
+    }
+
+    </style>
+
+</head>
+<body ontouchstart>
+    <div id="target" class="weui-cells"> 
+    <a href="http://10.10.10.41:9000/human.html">human</a><br>
+    <a href="http://10.10.10.41:9000/all-case-info.html">all-case-info</a><br>
+    <a href="http://10.10.10.41:9000/archives.html">archives</a><br>
+    <a href="http://10.10.10.41:9000/booking-details.html">booking-details</a><br>
+    <a href="http://10.10.10.41:9000/department.html">department</a><br>
+    <a href="http://10.10.10.41:9000/departments.html">departments</a><br>
+    <a href="http://10.10.10.41:9000/evaluate.html">evaluate</a><br>
+    <a href="http://10.10.10.41:9000/health-card-purchase.html">health-card-purchase</a><br>
+    <a href="http://10.10.10.41:9000/health-product.html">health-product</a><br>
+    <a href="http://10.10.10.41:9000/health-records.html">health-records</a><br>
+    <a href="http://10.10.10.41:9000/make-an-appointment.html">make-an-appointment</a><br>
+    <a href="http://10.10.10.41:9000/health-services.html">health-services</a><br>
+    <a href="http://10.10.10.41:9000/my-info-in.html">my-info-in</a><br>
+    <a href="http://10.10.10.41:9000/my-info.html">my-info</a><br>
+    <a href="http://10.10.10.41:9000/my-reservation.html">my-reservation</a><br>
+    <a href="http://10.10.10.41:9000/new-user.html">new-user</a><br>
+    <a href="http://10.10.10.41:9000/recommend.html">recommend</a><br>
+    <a href="http://10.10.10.41:9000/transfer-call.html">transfer-call</a><br>
+    </div>
+    <div class="weui-footer weui-footer_fixed-bottom footer">
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
+    </div>
+    <div class="page">
+        <div class="weui-skin_android" id="androidActionsheet" style="display: none">
+            <div class="weui-mask"></div>
+            <div class="weui-actionsheet">
+                <div class="weui-actionsheet__menu">
+                    <div class="weui-actionsheet__cell">
+                      <div class="weui-cell__ft weui-media-box_appmsg">
+                        <div class="weui-media-box__hd ">
+                          <img id="head_img" class="inm weui-media-box__thumb head_img" src="images/head.png">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <span class="ys fl block">周杰伦</span>
+                            <span class="we_desc grey block"><span>23333</span></span>
+                            <span class="yes_re"></span>
+                        </div>
+                      </div>
+                      <div id="img_code_pa">
+                        <img id="img_code" src="images/barcode-2d.png" alt="">
+                      </div>
+                      <p class="grey">扫一扫上面的二维码，缴费取报告轻松搞定</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

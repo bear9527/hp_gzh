@@ -1,0 +1,49 @@
+/*
+ * 所有按钮放的位置
+ * @Author: strong
+ * @Date: 2017-05-24 21:38:57
+ * @Last Modified by: strong
+ * @Last Modified time: 2017-06-15 16:24:09
+ */
+
+@import "../../base/fn";
+@import "kdui-btn_global";
+@import "kdui-btn_default";
+@import "kdui-btn_ghost";
+@import "kdui-btn_disabled";
+
+button,
+input {
+  &.kdui-btn {
+    width: 100%;
+    border-width: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.kdui-btn_mini {
+  width: auto;
+  height: @kduiMiniBtnHeight;
+  line-height: @kduiMiniBtnLineHeight;
+  border-radius: @kduiMiniBtnBorderRadius;
+  font-size: @kduiMiniBtnFontSize;
+}
+
+.kdui-btn__warp {
+  display: flex;
+  justify-content: center;
+  margin-top: .4rem;
+  margin-bottom: .1rem;
+  &.kdui-btn__warp_fixed {
+    background: @kduiBgColor;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: .2rem;
+    margin-top: .2rem;
+  }
+}

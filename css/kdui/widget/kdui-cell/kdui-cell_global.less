@@ -1,0 +1,101 @@
+@import "../../base/fn";
+.kdui-cells {
+  background-color: @kduiCellBg;
+  font-size: @kduiCellFontSize;
+  color: @kduiFontPrimaryColor;
+}
+
+.kdui-cells__title {
+  margin-top: .7 - @kduiFontSecondarySize - .2;
+  margin-bottom: .2rem;
+  padding-left: @kduiCellGapH;
+  padding-right: @kduiCellGapH;
+  color: @kduiFontSecondaryColor;
+  font-size: @kduiFontSecondarySize;
+}
+
+.kdui-cells__tips {
+  margin-top: .2rem - 0.03rem;
+  margin-bottom: .7 - @kduiFontSecondarySize - .2;
+  padding-left: @kduiCellGapH;
+  padding-right: @kduiCellGapH;
+  color: @kduiFontSecondaryColor;
+  font-size: @kduiFontSecondarySize;
+  line-height: unit((.12 + @kduiCellFontSize) / @kduiCellFontSize);
+  &.kdui-cells__tips_top {
+    color: @kduiColorPrimary;
+    padding-top: .1rem - 0.03rem;
+    padding-bottom: .1rem - 0.03rem;
+    margin: 0;
+  }
+}
+
+.kdui-cell {
+  padding: @kduiCellGapV @kduiCellGapH @kduiCellGapV 0;
+  margin-left: @kduiCellGapH;
+  line-height: @kduiCellLineHeight;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid @kduiLineColor;
+  height: @kduiCellHeight;
+  &:first-child {
+    border-top: none;
+  }
+  &.kdui-cell_second {
+    height: @kduiCellSencodHeight;
+    line-height: unit((.2 + @kduiCellFontSize) / @kduiCellFontSize);
+  }
+  &.kdui-cell_multi {
+    height: auto;
+    line-height: unit((.2 + @kduiCellFontSize) / @kduiCellFontSize);
+    font-size: @kduiCellFontSize;
+    .text_wrap()
+  }
+}
+
+.kdui-cell_multiln {
+  line-height: unit((.12 + @kduiCellFontSize) / @kduiCellFontSize);
+  padding: .08rem 0;
+  .text_wrap()
+}
+
+.kdui-cell_disabled {
+  pointer-events: none;
+  cursor: default;
+  color: @kduiDisableColor !important;
+}
+
+.kdui-cell__hd {
+  margin-right: .2rem;
+}
+
+.kdui-cell__bd {
+  flex: 1;
+}
+
+.kdui-cell_warp {
+  .ellipsis();
+}
+
+.kdui-cell_warp_ln2 {
+  .ellipsisLn(2);
+  .kdui-cell_multiln;
+}
+
+.kdui-cell_minw {
+  min-width: @kduiCellMiniWidth;
+}
+
+.kdui-cell__ft {
+  text-align: right;
+  color: @kduiFontSecondaryColor;
+  margin-left: .2rem;
+}
+
+.kdui-cell_autoh {
+  height: auto !important;
+}
+
+.kdui-cell_defauth {
+  height: @kduiCellHeight;
+}

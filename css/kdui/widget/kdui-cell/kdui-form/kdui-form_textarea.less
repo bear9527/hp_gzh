@@ -1,0 +1,24 @@
+@import "../../../base/fn";
+
+.kdui-textarea {
+    display: block;
+    border: 0;
+    resize: none;
+    width: 100%;
+    color: inherit;
+    font-size: @kduiCellFontSize;
+    line-height: inherit;
+    outline: 0;
+    line-height: unit((.12 + @kduiCellFontSize) / @kduiCellFontSize);
+}
+
+.kdui-textarea__counter{
+    color: @kduiFontSupplementColor;
+    text-align: right;
+}
+
+// textarea文本框自动变高的辅助类
+.kdui-textarea_autotext_hidden{
+  position: absolute;
+  left: -9999rem;
+}

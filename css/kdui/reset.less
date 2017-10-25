@@ -1,0 +1,65 @@
+/*
+ * reset样式
+ * @Author: strong
+ * @Date: 2017-05-20 16:34:52
+ * @Last Modified by: strong
+ * @Last Modified time: 2017-07-18 16:53:01
+ */
+@import "fn";
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1.0;
+    font-family: @kduiFontDefault;
+    color: @kduiFontPrimaryColor;
+    background-color: @kduiBgColor;
+    font-size: @kduiFontPrimarySize;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+/* 在X5新内核Blink中，在排版页面的时候，会主动对字体进行放大，会检测页面中的主字体，当某一块字体在我们的判定规则中，认为字号较小，并且是页面中的主要字体，就会采取主动放大的操作。然而这不是我们想要的，可以采取给最大高度解决 */
+*,*:before,*:after { max-height: 100000px }
+
+a img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    .setTapColor();
+}
+
+::-webkit-input-placeholder{
+    color: @kduiFontSupplementColor;
+}
+:-moz-placeholde{
+    color: @kduiFontSupplementColor;
+}
+::-moz-placeholder{
+    color: @kduiFontSupplementColor;
+}
+:-ms-input-placeholder{
+    color: @kduiFontSupplementColor;
+}
+
+// 处理ios下使用fastclick导致label不能点击问题
+label > * {
+    pointer-events: none;
+}
+ul {
+  list-style: none;
+  list-style-position: inside
+}
+ol {
+  list-style-position: inside
+}
+
+    

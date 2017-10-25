@@ -1,0 +1,44 @@
+@import "../../base/fn";
+
+.kdui-border_t {
+  border-top: 1px solid @kduiLineColor !important;
+}
+
+// 兼容flex布局或等分布局下1px的问题
+.kdui-border__1px_t {
+  .setTopLine();
+}
+
+.kdui-border_b {
+  border-bottom: 1px solid @kduiLineColor !important;
+}
+
+.kdui-border__1px_b {
+  .setBottomLine();
+}
+
+.kdui-border_l {
+  border-left: 1px solid @kduiLineColor !important;
+}
+
+.kdui-border__1px_l {
+  .setLeftLine();
+}
+
+.kdui-border_r {
+  border-right: 1px solid @kduiLineColor !important;
+}
+
+.kdui-border__1px_r {
+  .setRightLine();
+}
+
+.kdui-border_h {
+  .kdui-border_l;
+  .kdui-border_r;
+}
+
+.kdui-border_v {
+  .kdui-border_t;
+  .kdui-border_b;
+}

@@ -1,0 +1,19 @@
+@import "../../../base/fn";
+
+.kdui-input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: inherit;
+    color: inherit;
+    height: @kduiCellLineHeight;
+    line-height: @kduiCellLineHeight;
+
+    // hides the spin-button
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}

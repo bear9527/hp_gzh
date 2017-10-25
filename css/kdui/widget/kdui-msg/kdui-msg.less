@@ -1,0 +1,53 @@
+/*
+ * 通用的空数据、错���页面、提示页面
+ * @Author: strong
+ * @Date: 2017-06-05 16:35:23
+ * @Last Modified by: strong
+ * @Last Modified time: 2017-09-26 17:14:00
+ */
+
+@import "../../base/fn";
+.kdui-msg__warp {
+  //align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 30%;
+  padding: 0 .3rem;
+}
+.kdui-msg {
+  .kdui-msg__pic {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5rem*2/3 3.2rem*2/3;
+    height: 3.2rem*2/3;
+    &.kdui-msg__pic-emptydata {
+      background-image: url(../../images/v5/system/pic_emptyData.png?201707031736);
+    }
+    &.kdui-msg__pic-error {
+      background-image: url(../../images/v5/system/pic_error.png?201707031736);
+      background-size: 5.7rem*2/3 3.6rem*2/3;
+      height: 3.6rem*2/3;
+    }
+    &.kdui-msg__pic-infomation {
+      background-image: url(../../images/v5/system/pic_information.png?201707031736);
+    }
+    &.kdui-msg__pic-waiting {
+      background-image: url(../../images/v5/system/pic_waiting.png?201707031736);
+    }
+    &.kdui-msg__pic-maintenance {
+      background-image: url(../../images/v5/system/pic_maintenance.png?201707031736);
+    }
+    &.kdui-msg__pic-sucess {
+      background-image: url(../../images/v5/system/pic_sucess.png?201707031736);
+      width: auto;
+    }
+  }
+  .kdui-msg__desc {
+    font-size: @kduiFontSecondarySize;
+    text-align: center;
+    color: @kduiFontSupplementColor;
+    margin-top: .3rem;
+    line-height: unit((.1 + @kduiFontSecondarySize) / @kduiFontSecondarySize);
+    min-width: 4rem;
+  }
+}

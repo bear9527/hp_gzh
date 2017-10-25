@@ -8,6 +8,11 @@
     <link href="css/weui.css" rel="stylesheet"></link>
     <link href="css/jquery-weui.css" rel="stylesheet">
     <style>
+     * {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
     body{
         background: #efefef;
     }
@@ -48,7 +53,8 @@
     .block{
       display: inline-block;
       width: 70%;
-
+        float: left;
+    text-align: left;
     }
     .weui-cells {
     margin-top: 0em;
@@ -68,21 +74,31 @@
     margin-top: 10px;
     margin-bottom: 4px;
 }
+#img_code {
+    width: 150px;
+    height: 150px;
+    margin: 0 17%;
+}
+.we_desc{
+    color:#666;
+}
     </style>
+
 </head>
 <body ontouchstart>
-    <div class="weui-cells"> 
+    <div id="target" class="weui-cells"> 
         <a class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
-          <div class="weui-media-box__hd">
-           <img class="weui-media-box__thumb head_img" src="images/head.png">
-        </div>
-        <div class="weui-media-box__bd">
-            <span class="ys fl">周杰伦</span><span class="we_desc">(默认)</span>
-            <span class="we_desc grey block">用户ID:<span>23333</span></span>
-            <span class="yes_re"></span>
-        </div>
-          <div class="weui-cell__ft"><img src="images/barcode-2d.png" alt="">
-          </div>
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb head_img" src="images/head.png">
+            </div>
+            <div class="weui-media-box__bd">
+                <span class="ys fl">周杰伦</span><span class="we_desc">(默认)</span>
+                <span class="we_desc grey block">用户ID:<span>23333</span></span>
+                <span class="yes_re"></span>
+            </div>
+            <div class="weui-cell__ft">
+                <img src="images/barcode-2d.png" alt="">
+            </div>
         </a>  
         <a class="weui-cell weui-cell_access weui-media-box weui-media-box_appmsg" href="javascript:;">
           <div class="weui-media-box__hd">
@@ -93,46 +109,59 @@
             <span class="we_desc grey block">用户ID:<span>23333</span></span>
             <span class="yes_re"></span>
         </div>
-          <div class="weui-cell__ft"><img src="images/barcode-2d.png" alt="">
+          <div class="weui-cell__ft tup"><img src="images/barcode-2d.png" alt="">
           </div>
         </a>  
     </div>
     <a href="javascript:;" id="yes" class="weui-btn weui-btn_primary">+  添加身份证号</a>
     <div class="weui-footer weui-footer_fixed-bottom footer">
-      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+      <p class="weui-footer__text">Copyright © 2016-2017 禾普医疗</p>
     </div>
+    <div class="page">
+        <div class="weui-skin_android" id="androidActionsheet" style="display: none">
+            <div class="weui-mask"></div>
+            <div class="weui-actionsheet">
+                <div class="weui-actionsheet__menu">
+                    <div class="weui-actionsheet__cell">
+                      <div class="weui-cell__ft weui-media-box_appmsg">
+                        <div class="weui-media-box__hd ">
+                          <img id="head_img" class="inm weui-media-box__thumb head_img" src="images/head.png">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <span class="ys fl block">周杰伦</span>
+                            <span class="we_desc grey block"><span>23333</span></span>
+                            <span class="yes_re"></span>
+                        </div>
+                      </div>
+                      <div id="img_code_pa">
+                        <img id="img_code" src="images/barcode-2d.png" alt="">
+                      </div>
+                      <p class="grey">扫一扫上面的二维码，缴费取报告轻松搞定</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-weui.js"></script>
+    <script src="js/myInfo.js"></script>
     <script>
-        $(function(){
-        var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
-            $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
-            $uploaderInput = $("#uploaderInput"),
-            $uploaderFiles = $("#uploaderFiles")
-            ;
+    $(function(){
+        var $androidActionSheet = $('#androidActionsheet');
+        var $androidMask = $androidActionSheet.find('.weui-mask');
 
-        $uploaderInput.on("change", function(e){
-            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
-            for (var i = 0, len = files.length; i < len; ++i) {
-                var file = files[i];
-
-                if (url) {
-                    src = url.createObjectURL(file);
-                } else {
-                    src = e.target.result;
-                }
-
-                $uploaderFiles.append($(tmpl.replace('#url#', src)));
-            }
+        $("#target").on('click','.tup', function(e){
+            e.preventDefault();
+            var data_img = $(this).attr("data-img");
+            $("#img_code").attr("src",data_img);
+            $("#head_img").attr("src",data_img);
+            $androidMask.addClass("weui-mask--visible")
+            $androidActionSheet.css("display","block");
+            $androidMask.on('click',function () {
+                $androidActionSheet.css("display","none");
+            });
         });
-        $uploaderFiles.on("click", "li", function(){
-            $galleryImg.attr("style", this.getAttribute("style"));
-            $gallery.fadeIn(100);
-        });
-        $gallery.on("click", function(){
-            $gallery.fadeOut(100);
-        });
-
     });
     </script>
 </body>

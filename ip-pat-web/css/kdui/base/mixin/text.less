@@ -1,0 +1,23 @@
+.text_wrap() {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.ellipsis(@w: auto) {
+  width: @w;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.ellipsisLn(@line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  word-wrap: break-word;
+  word-break: break-all;
+}
